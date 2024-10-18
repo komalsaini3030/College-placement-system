@@ -1,0 +1,341 @@
+{% extends 'base.html'%}
+    {% block content%}
+    {% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+<div style="background: url('/media/bg5.jpg'); background-repeat:no-repeat;background-size:cover;  height:1450px; width: 100%;">
+	<br>
+<div class = "col-md-12" style="padding-right:300px"><div class="container" style="width:50%;background-color:white;"> 
+	<br>
+	<h3 style="text-align:center;color:black;">Add Company Details</h3>
+	<br>
+	<form action="/AddCompany/" method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		<div class="mb-4 row">
+			<label for="staticEmail" class="col-sm-5 col-form-label">COMPANY Name:</label>
+			<div class="col-sm-12">
+				<input type="text" class="form-control" id="inputPassword" name="CompanyName" required>
+			</div>
+		</div>
+		<div class="mb-5 row">
+			<label for="inputPassword" class="col-sm-5 col-form-label">PACKAGE/CTC:</label>
+			<div class="col-sm-12">
+				<input type="number" class="form-control" id="pack" name="pack" inputmode="decimal">
+				<small id="namevalid" class=" invalid-feedback">
+                                must be only numbers, range  between 1-100, including floating point numbers
+                                
+                            </small>
+			</div>
+		</div>
+		<div class="mb-5 row">
+			<label for="staticEmail" class="col-sm-5 col-form-label">FILE ATTACHMENTS:</label>
+			<div class="col-sm-12">
+				<input type="file" class="form-control" id="inputPassword" name="File" required >
+			</div>
+		</div>
+		<div class="mb-5 row">
+			<label for="inputPassword" class="col-md-5 col-form-label">ACTIVITY DATES:</label>
+			<div class="col-sm-12">	
+				<div class="row">
+					<div class="col-12">
+						<div class="row">
+							<div class="col-6">
+								<label>PRE PLACEMENT TALK DATE</label>
+							</div>
+							<div class="col-6">
+								<input type="date" class="form-control" id="placement1" name="placement1" >
+								<small id="namevalid" class=" invalid-feedback">
+									You cannot enter yesterday or any previous days dates.
+                                
+                            </small>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-6">
+								<label>TEST DATE &nbsp;</label>
+							</div>
+							<div class="col-6">
+								<input type="date" class="form-control" id="test_date1" name="test_date1">
+								<small id="namevalid" class=" invalid-feedback">
+									You cannot enter yesterday or any previous days dates.
+                                
+                            </small>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-6">
+								<label>INTERVIEW DATES</label>
+							</div>
+							<div class="col-6">
+								<input type="date" class="form-control" id="interview_Date" name="interview_Date">
+								<small id="namevalid" class=" invalid-feedback">
+									You cannot enter yesterday or any previous days dates.
+                                
+                            </small>`
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="mb-5 row">
+			<label for="inputPassword" class="col-sm-5 col-form-label">ADDITIONAL  INFORMATION:</label>
+			<div class="col-sm-12">
+				<input type="text" class="form-control" id="inputPassword" name="Additional_Information">
+			</div>
+		</div>
+		<div class="mb-5 row">
+			<label for="inputPassword" class="col-md-5 col-form-label">ELIGIBILITY CRITERIA: :</label>
+			<div class="col-sm-12">	
+				<div class="row">
+					<div class="col-12">
+						<div class="row">
+							<div class="col-2">
+								<label>CGPA:</label>
+							</div>
+							<div class="col-10">
+								<input type="number" class="form-control" id="CGPA" name="CGPA" step="0.01">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-2">
+								<label>STREAM :</label>
+							</div>
+							<div class="col-10">
+								<input type="checkbox" id="CSE" name="checks[]" value="CSE">
+								<label for="CSE"> CSE</label><br>
+								<input type="checkbox" id="IS" name="checks[]" value="IS">
+								<label for="IS"> IS</label><br>
+								<input type="checkbox" id="ECE" name="checks[]" value="ECE">
+								<label for="ECE">ECE</label><br>
+								<input type="checkbox" id="EEE" name="checks[]" value="EEE">
+								<label for="EEE">EEE</label><br>
+								<input type="checkbox" id="MECH" name="checks[]" value="MECH">
+								<label for="MECH">MECH</label><br>
+								<input type="checkbox" id="IP" name="checks[]" value="IP">
+								<label for="IP"> IP</label><br>
+								<input type="checkbox" id="CIVIL" name="checks[]" value="CIVIL">
+								<label for="CIVIL"> CIVIL</label><br>
+								<input type="checkbox" id="selectAll"  value="ALL_BRANCHES">
+								<label for="ALL_BRANCHES"> ALL BRANCHES</label><br>
+								<label for="Others">Others</label>
+								<input type="text" id="Others" name="Others">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="mb-5 row">
+			<label for="inputPassword" class="col-md-5 col-form-label">CATEGORIES:</label>
+			<div class="col-sm-12">	
+				<div class="col-sm-12">
+					<select class="form-control" name="CATEGORY" >
+						<option value="MASS">MASS</option>
+						<option value="CORE">CORE</option>
+						<option value="DREAM">DREAM</option>
+						<option value="OPEN DREAM">OPEN DREAM</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	
+		<div class="col-md-12">
+			<center>
+				<input type="submit" value="ADD" class="btn btn-outline-dark">
+			</center>
+		</div>
+		<br>
+	</div>
+</form>
+</div>
+<br>
+</div>
+
+
+</div>
+</div>
+<script>
+const pack = document.getElementById('pack');
+pack.addEventListener('blur', ()=>{
+    console.log("phone is blurred");
+    // Validate phone here
+    //let regex = /^([0-9]){10}$/;
+    let regex = /^([0-9]*[.])[0-9]$/;
+    let str = pack.value;
+    
+    console.log(regex, str);
+     
+    if(str >= 0 && str <= 100 ){
+        console.log('Your phone is valid');
+        pack.classList.remove('is-invalid');
+        validPhone = true;
+    }
+    else{
+        console.log('Your phone is not valid');
+        pack.classList.add('is-invalid');
+        validPhone = false;
+        
+    }
+})
+const placement1 = document.getElementById('placement1');
+placement1.addEventListener('blur', ()=>{
+    console.log("phone is blurred");
+    // Validate phone here
+    //let regex = /^([0-9]){10}$/;
+    //let regex = /^([0-9]*[.])[0-9]$/;
+    var str = placement1.value;
+    var str1 = str.split("-");
+    var month1 = str1[1];        //pre date
+    const today= new Date();
+    console.log(today);
+    var day = today.getDate();
+    var month = today.getMonth() + 1;      ///current month
+    var months = '0' + month
+    var year = today.getFullYear();
+    console.log(today);
+	console.log(day); 
+	console.log(months);
+	console.log(year);
+    console.log(str);
+    console.log(str1[0]);  //year
+    console.log(str1[1]);  //month
+    console.log(str1[2]);  //day
+    var todayDate = new Date(); //Today Date    
+    var dateOne = new Date(str);  
+    console.log(todayDate);
+    console.log(dateOne);
+
+           if (dateOne > todayDate) {    
+                //alert("Today Date is smaller than Date One.");    
+            }else {    
+                //alert("Today Date is greater than Date One.");    
+            }    
+
+    if(dateOne > todayDate){
+        console.log('Your phone is valid');
+        placement1.classList.remove('is-invalid');
+        validPhone = true;
+    }
+    else{
+        console.log('Your phone is not valid');
+        placement1.classList.add('is-invalid');
+        validPhone = false;
+        
+    }
+
+})
+const test_date1 = document.getElementById('test_date1');
+test_date1.addEventListener('blur', ()=>{
+    console.log("phone is blurred");
+    // Validate phone here
+    //let regex = /^([0-9]){10}$/;
+    //let regex = /^([0-9]*[.])[0-9]$/;
+    var str = test_date1.value;
+    var str1 = str.split("-");
+    var month1 = str1[1];        //pre date
+    const today= new Date();
+    console.log(today);
+    var day = today.getDate();
+    var month = today.getMonth() + 1;      ///current month
+    var months = '0' + month
+    var year = today.getFullYear();
+    console.log(today);
+	console.log(day); 
+	console.log(months);
+	console.log(year);
+    console.log(str);
+    console.log(str1[0]);  //year
+    console.log(str1[1]);  //month
+    console.log(str1[2]);  //day
+    var todayDate = new Date(); //Today Date    
+    var dateOne = new Date(str);  
+    console.log(todayDate);
+    console.log(dateOne);
+
+           if (dateOne > todayDate) {    
+                //alert("Today Date is smaller than Date One.");    
+            }else {    
+                //alert("Today Date is greater than Date One.");    
+            }    
+
+    if(dateOne > todayDate){
+        console.log('Your phone is valid');
+        test_date1.classList.remove('is-invalid');
+        validPhone = true;
+    }
+    else{
+        console.log('Your phone is not valid');
+        test_date1.classList.add('is-invalid');
+        validPhone = false;
+        
+    }
+
+})
+const interview_Date = document.getElementById('interview_Date');
+interview_Date.addEventListener('blur', ()=>{
+    console.log("phone is blurred");
+    // Validate phone here
+    //let regex = /^([0-9]){10}$/;
+    //let regex = /^([0-9]*[.])[0-9]$/;
+    var str = interview_Date.value;
+    var str1 = str.split("-");
+    var month1 = str1[1];        //pre date
+    const today= new Date();
+    console.log(today);
+    var day = today.getDate();
+    var month = today.getMonth() + 1;      ///current month
+    var months = '0' + month
+    var year = today.getFullYear();
+    console.log(today);
+	console.log(day); 
+	console.log(months);
+	console.log(year);
+    console.log(str);
+    console.log(str1[0]);  //year
+    console.log(str1[1]);  //month
+    console.log(str1[2]);  //day
+    var todayDate = new Date(); //Today Date    
+    var dateOne = new Date(str);  
+    console.log(todayDate);
+    console.log(dateOne);
+
+           if (dateOne > todayDate) {    
+                //alert("Today Date is smaller than Date One.");    
+            }else {    
+                //alert("Today Date is greater than Date One.");    
+            }    
+
+    if(dateOne > todayDate){
+        console.log('Your phone is valid');
+        interview_Date.classList.remove('is-invalid');
+        validPhone = true;
+    }
+    else{
+        console.log('Your phone is not valid');
+        interview_Date.classList.add('is-invalid');
+        validPhone = false;
+        
+    }
+
+})
+/*var today= new Date();
+console.log(today);
+console.log(today.getDate()); 
+console.log(today.getMonth());
+console.log(today.getFullYear());*/
+</script>
+<script>
+	$("#selectAll").click(function(){
+        $("input[type=checkbox]").prop('checked', $(this).prop('checked'));
+
+});
+	</script>
+
+{% endblock %}

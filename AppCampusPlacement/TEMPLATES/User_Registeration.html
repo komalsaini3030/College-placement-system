@@ -1,0 +1,1934 @@
+{% extends 'base.html'%}
+    {% block content%}
+    {% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+<head>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+</head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f1f1f1;
+}
+
+#regForm {
+  background-color: #ffffff;
+  margin: 10px auto;
+  font-family: Raleway;
+  padding: 150px;
+  width: 70%;
+  min-width: 300px;
+}
+
+h1 {
+  text-align: center;  
+}
+
+input {
+  padding: 10px;
+  width: 100%;
+  font-size: 17px;
+  font-family: Raleway;
+  border: 1px solid #aaaaaa;
+}
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+  background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+
+button {
+  background-color: #04AA6D;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  font-family: Raleway;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+#prevBtn {
+  background-color: #bbbbbb;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;  
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #04AA6D;
+}
+</style>
+<body>    <br>
+<div style="background: url('/media/bg5.jpg'); background-repeat:no-repeat;background-size:cover;  height:2000px; width: 100%;">
+    <br>
+      <br>
+<form id="regForm" action="/User_Registeration/" method="POST">
+    {% csrf_token %}
+  <h1>Register:</h1>
+  <!-- One "tab" for each step in the form: -->
+  <div class="tab">
+    <div class="container row" >
+        <div class="row">
+            <h3>Personal Details</h3>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                                Name:
+                            </label>
+                        </div>
+                        <div class="col-md-8">
+                            <input oninput="this.className = ''" style="caret-color:red;";type="text" class="form-control" id="name" name="name" required  
+                        ><small id="namevalid" class="invalid-feedback">
+                        Your Name must be 2-30 characters long.Write in capital letters
+                      </small>
+                        </div>
+                    </div>
+                </div>
+                 <br> 
+            <br>
+            </div>
+             <br> 
+            <br>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                USN *:
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input oninput="this.className = ''" style="caret-color:red;" type="text" class="form-control" id="usn" name="usn"
+                             maxlength="10" minlength="10"
+                            placeholder="[ pattern - 4NI18IS021 ]">
+                             <small id="namevalid" class="invalid-feedback">
+                        must be capital letters, pattern example: 4NI18IS077, 4NI is fixed next 2 numbers are year of joining. Next 2 letters are branch, next 3 are just unique numbers
+                      </small>
+                            </div>
+                        </div>
+                       </div>
+                </div>
+                   <br> 
+                    <br> 
+
+
+                 <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                PASSWORD*:
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input oninput="this.className = ''" style="caret-color:red;" type="password" class="form-control" id="password" name="password">
+                            <small></small>
+                            </div>
+                        </div>
+                       </div>
+                </div>
+                   <br> 
+                    <br> 
+
+
+                 <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                Date of Birth * :
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input oninput="this.className = ''" style="caret-color:red;" type="date" class="form-control" id="dob" name="dob" required  min='1922-01-01' max='2007-12-31'>
+                            </div>
+                        </div>
+                       </div>
+                </div>
+                   <br>   
+                    <br>  
+
+                 <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    Gender
+                                    </label>
+                                </div>
+
+
+
+                                <div class="col-md-8">
+                                    <select name="gender" class="form-select form-select-lg mb-3">
+                                        <option selected>Select Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Prefer not say">Prefer not to say</option>
+                                    </select>                                
+                                       <!-- <input oninput="this.className = ''" type="radio" class="form-check-input" id="flexRadioDefault1" name="gender" value="male"> Male
+                                        <br>
+
+
+
+                                        <input oninput="this.className = ''" type="radio" class="form-check-input" id="flexRadioDefault1" name="gender" value="female"> Female
+                                        <br>
+
+                                        <input oninput="this.className = ''" type="radio" class="form-check-input" id="flexRadioDefault1" name="gender" value="Others"> Prefer not to say
+                                        -->
+                                </div>
+                                
+                            </div>
+                        </div>  
+
+                     </div>
+                     <br>
+
+                <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                Category * :
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <select  name="Category" class="form-select form-select-lg mb-3">
+                                    <option selected>Select Category</option>
+                                    <option value="GENERAL">GENERAL</option>
+                                    <option value="2B">2B</option>
+                                    <option value="3B">3B</option>
+                                    <option value="3B">OBC</option>
+                                </select>
+                            </div>
+                        </div>
+                       </div>
+                </div>
+                   <br>
+
+    <!-- <p><input placeholder="First name..." oninput="this.className = ''" name="fname"></p>
+    <p><input placeholder="Last name..." oninput="this.className = ''" name="lname"></p> -->
+  </div>
+</div>
+
+  <div class="tab">
+    <div class="row">
+                        <h3>Educational Details</h3>
+                        <hr>
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                Mode of admission *
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                                <select  name="admission" class="form-select">
+                                    <option selected>Select</option>
+                                    <option value="comed k">COMED K</option>
+                                    <option value="CET">CET</option>
+                                    <option value="Management">Management</option>
+                                </select>
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+
+
+                 <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                Engineering branch * 
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                                <select  name="branch" class="form-select">
+                                    <option selected>Select</option>
+                                    <option value="CSE">CSE</option>
+                                    <option value="ISE">ISE</option>
+                                    <option value="ME">ME</option>
+                                    <option value="IPE">IPE</option>
+                                    <option value="CE">CE</option>
+                                    <option value="EEE">EEE</option>
+                                    <option value="ECE">ECE</option>
+                                </select>
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br>   
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                Section *
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                                <select  name="section" class="form-select">
+                                    <option selected>Select</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                </select>
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+
+                   <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                Year of joining*::
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input oninput="this.className = ''" style="caret-color:red;" type="number" class="form-control" id="yoj" name="yoj"  >
+                            <small id="namevalid" class=" invalid-feedback">must be only numbers, range between current year-8 to current year-4
+                                
+                            </small>
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+                   <div class="row">
+                       
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                Year of passing*:
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input style="caret-color:red;" type="NUMBER" class="form-control" id="yop" name="yop" required>
+                            <small id="namevalid" class=" invalid-feedback">must be only numbers, range between current year+1 or current year
+                                
+                            </small>
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+                   <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                1st sem SGPA*::
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input style="caret-color:red;" type="number" class="form-control" id="fsem" name="fsem" required >
+                            <small id="namevalid" class=" invalid-feedback">
+                                must be only numbers, range  between 1-10, including floating point numbers
+                                
+                            </small>
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+                   <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                1st sem percentage*(SGPA-0.75*10):
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input style="caret-color:red;" type="number" class="form-control" id="fper" name="fper" required pattern="[A-Z0-9]{}" min="1">
+                            <small id="namevalid" class=" invalid-feedback">
+                                must be only numbers, range  between 1-100, including floating point numbers
+                                
+                            </small>
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+                   <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                2nd sem SGPA*:
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input style="caret-color:red;" type="NUMBER" class="form-control" id="ssem" name="ssem">
+                            <small id="namevalid" class=" invalid-feedback">
+                                must be only numbers, range  between 1-10, including floating point numbers
+                                
+                            </small>
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+                   <div class="row">
+                       
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                2nd sem percentage* 
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input style="caret-color:red;" type="NUMBER" class="form-control" id="sper" name="sper" required pattern="[A-Z0-9]{}" min="1">
+                             <small id="namevalid" class=" invalid-feedback">
+                                must be only numbers, range  between 1-100, including floating point numbers
+                                
+                            </small>
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+                   <div class="row">
+                      
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                3rd sem SGPA*:
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input style="caret-color:red;" type="NUMBER" class="form-control" id="tsem" name="tsem" required pattern="[A-Z0-9]{}" min="1">
+                            <small id="namevalid" class=" invalid-feedback">
+                                must be only numbers, range  between 1-10, including floating point numbers
+                                
+                            </small>
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+                   <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                3rd sem percentage*:
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input style="caret-color:red;" type="NUMBER" class="form-control" id="tper" name="tper" required pattern="[A-Z0-9]{}" min="1">
+                             <small id="namevalid" class=" invalid-feedback">
+                                must be only numbers, range  between 1-100, including floating point numbers
+                                
+                            </small>
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+                   <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                4th sem SGPA*:                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input style="caret-color:red;" type="NUMBER" class="form-control" id="foursem" name="foursem" required >
+
+                            <small id="namevalid" class=" invalid-feedback">
+                                must be only numbers, range  between 1-10, including floating point numbers
+                                
+                            </small>
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+                   <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                4th sem percentage*:
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input style="caret-color:red;" type="NUMBER" class="form-control" id="fourper" name="fourper" required >
+                             <small id="namevalid" class=" invalid-feedback">
+                                must be only numbers, range  between 1-100, including floating point numbers
+                                
+                            </small>
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+                   <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                               5th sem SGPA*:
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input style="caret-color:red;" type="NUMBER" class="form-control" id="sem5" name="sem5" required >
+                            <small id="namevalid" class=" invalid-feedback">
+                                must be only numbers, range  between 1-10, including floating point numbers
+                                
+                            </small>
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+                   <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                5th sem percentage*:
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input style="caret-color:red;" type="NUMBER" class="form-control" id="sem5per" name="sem5per" required >
+                             <small id="namevalid" class=" invalid-feedback">
+                                must be only numbers, range  between 1-100, including floating point numbers
+                                
+                            </small>
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+                   <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                               Total CGPA*:
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input style="caret-color:red;" type="NUMBER" class="form-control" id="cgpa" name="cgpa" required >
+                            <small id="namevalid" class=" invalid-feedback">
+                                
+                                must be only numbers, range  between 1-10
+                            </small>
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+                   <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                               Total CGPA%*:
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input style="caret-color:red;" type="NUMBER" class="form-control" id="cgpaper" name="cgpaper" required >
+                            <small id="namevalid" class=" invalid-feedback">
+                                must be only numbers, range  between 1-100
+                                
+                            </small>
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+                   <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                TOTAL CREDITS EARNED UPTO 5TH SEMESTER *:
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input style="caret-color:red;" type="NUMBER" class="form-control" id="credits" name="credits" required >
+                            <small id="namevalid" class=" invalid-feedback">
+                                must be only numbers, range  between 1-175
+                                
+                            </small>
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+                   <div class="row">
+                       
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                NUMBER OF SUBJECTS CLEARED IN MUTE *:
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input style="caret-color:red;" type="NUMBER" class="form-control" id="cleared" name="cleared" required >
+                            <small id="namevalid" class=" invalid-feedback">
+                                must be only numbers, range  between 0-20
+                                
+                            </small>
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+                   <div class="row">
+                
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                               CURRENT ARREARS *:
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input style="caret-color:red;" type="NUMBER" class="form-control" id="current" name="current" required pattern="[A-Z0-9]{}" min="1">
+                            <small id="namevalid" class=" invalid-feedback">
+                                must be only numbers, range  between 0-20
+                                
+                            </small>
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+    <!-- <p><input placeholder="E-mail..." oninput="this.className = ''" name="email"></p>
+    <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p>
+    must be only numbers between 1-100 including floating point numbers -->
+  </div>
+  <div class="tab">
+    <div class="row">
+                    <h3>Previous educational details</h3>
+                    <hr>
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    10th/SSLC percentage* :
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="NUMBER" class="form-control" id="ssc_percentage" name="ssc_percentage"  min="1">
+                                      <small id="namevalid" class=" invalid-feedback">
+                                must be only numbers between 1-100 including floating point numbers
+                                
+                            </small>
+                                </div>
+                            </div>
+                       </div>
+            </div>
+        <br>
+
+        <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    10th/sslc board* :
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                    <select  name="ssc_board"  class="form-select form-select-lg mb-3">
+                                    <option selected>Select Category</option>
+                                    <option value="STATEBOARD">STATEBOARD</option>
+                                    <option value="CBSE">CBSE</option>
+                                    <option value="ICSE">ICSE</option>
+                                    
+                                </select>
+                                </div>
+                            </div>
+                       </div>
+        </div>
+        <br>
+
+         <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    Name of institution, studied for 10th/sslc*:
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="text" class="form-control" id="ssc_name" name="ssc_name"  >
+                                      <small id="namevalid" class=" invalid-feedback">
+                                text, both character and numbers,  only numbers not allowed
+                                
+                            </small>
+                                </div>
+                            </div>
+                       </div>
+        </div>
+        <br>
+
+        <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    10th/sslc qualified year*:
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="number" min="1900" max="2099" step="1" value="2016" class="form-control" id="ssc_year" name="ssc_year">
+                                      <small id="namevalid" class=" invalid-feedback">
+                                must be only numbers between, current year-50, current year-5
+                                
+                            </small>
+                                </div>
+                            </div>
+                       </div>
+        </div>
+        <br>
+
+        <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    12th/PUC percentage*:
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="NUMBER" class="form-control" id="hsc_percentage" name="hsc_percentage"  min="1">
+                                     <small id="namevalid" class=" invalid-feedback">
+                                must be only numbers between 1-100, including floating point numbers
+                                
+                            </small>
+                                </div>
+                            </div>
+                       </div>
+        </div>
+        <br>
+
+        <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    12th/PUC board*::
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                    <select  name="hsc_board"  class="form-select form-select-lg mb-3">
+                                    <option selected>Select Category</option>
+                                    <option value="STATEBOARD">STATEBOARD</option>
+                                    <option value="CBSE">CBSE</option>
+                                    <option value="ICSE">ICSE</option>
+                                    
+                                </select>
+                                     
+
+                                </div>
+                            </div>
+                       </div>
+        </div>
+        <br>
+
+         <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    Name of the institution studied 12th/Puc*:
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="text" class="form-control" id="hsc_name" name="hsc_name" >
+                                     <small id="namevalid" class=" invalid-feedback">
+                                Text, both character and numbers, only numbers not allowed
+                                
+                            </small>
+                                </div>
+                            </div>
+                       </div>
+        </div>
+        <br>
+
+         <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    12th/PUC qualified year*
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="NUMBER" class="form-control" id="hsc_qualifiedYear" name="hsc_qualifiedYear"  min="1">
+                                      <small id="namevalid" class=" invalid-feedback">
+                               must be only numbers, current year-50 to current year-3
+                            </small>
+                                </div>
+                            </div>
+                       </div>
+        </div>
+        <br>
+
+        <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    Diploma percentage (if lateral entry):
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="text" class="form-control" id="diploma_percentage" name="diploma_percentage"  >
+                                      <small id="namevalid" class=" invalid-feedback">
+                                must be only numbers between 1-100, including floating point numbers
+                                
+                            </small>
+                                </div>
+                            </div>
+                       </div>
+        </div>
+        <br>
+
+        <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    Diploma CET percentage (if lateral entry)
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="text" class="form-control" id="dipCET_percentage" name="dipCET_percentage">
+                                      <small id="namevalid" class=" invalid-feedback">
+                                must be only numbers between 1-100, including floating point numbers
+                                
+                            </small>
+                                </div>
+                            </div>
+                       </div>
+        </div>
+        <br>
+
+        <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    Name of the institution studied diploma:
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="text" class="form-control" id="diploma_name" name="diploma_name">
+                                      <small id="namevalid" class=" invalid-feedback">
+                                Text, both character and numbers, only numbers not allowed
+                                
+                            </small>
+                                </div>
+                            </div>
+                       </div>
+        </div>
+        <br>
+
+         <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                   Diploma qualified year
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="text" class="form-control" id="dipQualified_year"  name="dipQualified_year" >
+                                     
+                                      <small id="namevalid" class=" invalid-feedback">
+                               must be only numbers, current year-50 to current year-3
+                            </small>
+                                </div>
+                            </div>
+                       </div>
+        </div>
+        <br>
+
+    <!-- <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
+    <p><input placeholder="mm" oninput="this.className = ''" name="nn"></p>
+    <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p> -->
+  </div>
+  <div class="tab">
+     <div class="row">
+                    <h3>Contact details</h3>
+                    <hr>
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    contact number *
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="NUMBER" class="form-control" id="contact_number" name="contact_number"  min="1">
+                                </div>
+                            </div>
+                       </div>
+                </div>
+                <br>
+
+                <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    LANDLINE NUMBER *
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="NUMBER" class="form-control" id="landline_number" name="landline_number"  min="1">
+                                </div>
+                            </div>
+                       </div>
+                </div>
+                <br>
+
+                <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    PARENTS CONTACT NUMBER (DO NOT ADD 0 / +1) ONLY 10 DIGITS 
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="NUMBER" maxlength="10" class="form-control" id="parent_number" pattern="[1-9]{3}-[0-9]{3}-[0-9]{4}" name="parent_number"  min="1">
+                                </div>
+                            </div>
+                       </div>
+                </div>
+                <br>
+
+                 <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                   Alternate contact number *
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="text" class="form-control" id="alt_number" name="alt_number"  min="1" pattern="[1-9]{1}[0-9]{9}" >
+                                </div>
+                            </div>
+                       </div>
+                </div>
+                <br>
+
+                <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                   EMAIL ID - gmail *
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="email" class="form-control" id="email" name="email" >
+                                     <small id="emailvalid" class="form-text text-muted invalid-feedback">
+                        Your email must be a valid email
+                      </small>
+                                </div>
+                            </div>
+                       </div>
+                </div>
+                <br>
+              
+
+                 <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                   College mail-id
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="email" class="form-control" id="clg_id" name="clg_id" >
+                                </div>
+                            </div>
+                       </div>
+                </div>
+                <br>
+
+                <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                   CURRENT ADDRESS *
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="text" class="form-control" id="current_add" name="current_add" >
+                                </div>
+                            </div>
+                       </div>
+                </div>
+                <br>
+
+                <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                  PERMANENT ADDRESS (HOME) *
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="text" class="form-control" id="permanent_add" name="permanent_add" >
+                                </div>
+                            </div>
+                       </div>
+                </div>
+                <br>
+    <!-- <p><input placeholder="Username..." oninput="this.className = ''" name="uname"></p>
+    <p><input placeholder="Password..." oninput="this.className = ''" name="pword" type="password"></p> -->
+  </div>
+  <br>
+  <div style="overflow:auto;">
+    <div style="float:right;padding-right: 150px;">
+      <button type="button"   id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+      <button type="button"  id="nextBtn" onclick="nextPrev(1)">Next</button>
+    </div>
+  </div>
+  <!-- Circles which indicates the steps of the form: -->
+  <div style="text-align:center;margin-top:40px;">
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+  
+</form>
+
+
+<script>
+var currentTab = 0; // Current tab is set to be the first tab (0)
+showTab(currentTab); // Display the current tab
+
+function showTab(n) {
+  // This function will display the specified tab of the form...
+  var x = document.getElementsByClassName("tab");
+  x[n].style.display = "block";
+  //... and fix the Previous/Next buttons:
+  if (n == 0) {
+    document.getElementById("prevBtn").style.display = "none";
+  } else {
+    document.getElementById("prevBtn").style.display = "inline";
+  }
+  if (n == (x.length - 1)) {
+    document.getElementById("nextBtn").innerHTML = "Submit";
+  } else {
+    document.getElementById("nextBtn").innerHTML = "Next";
+  }
+  //... and run a function that will display the correct step indicator:
+  fixStepIndicator(n)
+}
+
+function nextPrev(n) {
+  // This function will figure out which tab to display
+  var x = document.getElementsByClassName("tab");
+  // Exit the function if any field in the current tab is invalid:
+  if (n == 1 && !validateForm()) return false;
+  // Hide the current tab:
+  x[currentTab].style.display = "none";
+  // Increase or decrease the current tab by 1:
+  currentTab = currentTab + n;
+  // if you have reached the end of the form...
+  if (currentTab >= x.length) {
+    // ... the form gets submitted:
+    document.getElementById("regForm").submit();
+    return false;
+  }
+  // Otherwise, display the correct tab:
+  showTab(currentTab);
+}
+
+function validateForm() {
+  // This function deals with validation of the form fields
+  var x, y, i, valid = true;
+  x = document.getElementsByClassName("tab");
+  y = x[currentTab].getElementsByTagName("input");
+  // A loop that checks every input field in the current tab:
+  for (i = 0; i < y.length; i++) {
+    // If a field is empty...
+    if (y[i].value == "") {
+      // add an "invalid" class to the field:
+      y[i].className += " invalid";
+      // and set the current valid status to false
+      valid = false;
+    }
+  }
+  // If the valid status is true, mark the step as finished and valid:
+  if (valid) {
+    document.getElementsByClassName("step")[currentTab].className += " finish";
+  }
+  
+
+  return valid; // return the valid status
+}
+
+function fixStepIndicator(n) {
+  // This function removes the "active" class of all steps...
+  var i, x = document.getElementsByClassName("step");
+  for (i = 0; i < x.length; i++) {
+    x[i].className = x[i].className.replace(" active", "");
+  }
+  //... and adds the "active" class on the current step:
+  x[n].className += " active";
+}
+const name = document.getElementById('name');
+
+name.addEventListener('blur', ()=>{
+    console.log("name is blurred");
+    // Validate name here
+    let regex = /^([A-Z]){2,30}$/;
+    let str = name.value;
+    console.log(regex, str);
+    if(regex.test(str)){
+        console.log('Your name is valid');
+        name.classList.remove('is-invalid');
+        validUser = true;
+    }
+    else{
+        console.log('Your name is not valid');
+        name.classList.add('is-invalid');
+        validUser = false;
+        
+    }
+})
+const usn = document.getElementById('usn');
+
+usn.addEventListener('blur', ()=>{
+    console.log("name is blurred");
+    // Validate name here
+    let regex = /^([4]){1}([N]){1}([I]){1}([0-9]){2}([A-Z]){2}([0-9]){3}$/;
+    let str = usn.value;
+    console.log(regex, str);
+    if(regex.test(str)){
+        console.log('Your name is valid');
+        usn.classList.remove('is-invalid');
+        validUser = true;
+    }
+    else{
+        console.log('Your name is not valid');
+        usn.classList.add('is-invalid');
+        validUser = false;
+        
+    }
+})
+const yoj = document.getElementById('yoj');
+yoj.addEventListener('blur', ()=>{
+    console.log("phone is blurred");
+    // Validate phone here
+    //let regex = /^([0-9]){10}$/;
+    let regex = /^([0-9]){4}$/;
+    let str = yoj.value;
+    const d = new Date();
+    let year = d.getFullYear();
+    console.log(year);
+    var year1 = year - 8;
+    var year2 = year - 4;
+    console.log(year1);
+    console.log(regex, str);
+     
+    if (str >= year1 && str <= year2){
+        console.log('Your phone is valid');
+        yoj.classList.remove('is-invalid');
+        validPhone = true;
+    }
+    else{
+        console.log('Your phone is not valid');
+        yoj.classList.add('is-invalid');
+        validPhone = false;
+        
+    }
+})
+const yop = document.getElementById('yop');
+let validyop = false;
+yop.addEventListener('blur', ()=>{
+    console.log("phone is blurred");
+    // Validate phone here
+    //let regex = /^([0-9]){10}$/;
+    let regex = /^([0-9]){4}$/;
+    let str = yop.value;
+    const d1 = new Date();
+    let years = d1.getFullYear();
+    console.log(years);
+    var years1 = years + 1;
+    var years2 = years;
+    console.log(years1);
+    console.log(regex, str);
+     
+    if (str == years1 || str == years2){
+        console.log('Your phone is valid');
+        yop.classList.remove('is-invalid');
+        validyop = true;
+    }
+    else{
+        console.log('Your phone is not valid');
+        yop.classList.add('is-invalid');
+        validyop = false;
+        
+    }
+})
+const fsem = document.getElementById('fsem');
+fsem.addEventListener('blur', ()=>{
+    console.log("phone is blurred");
+    // Validate phone here
+    //let regex = /^([0-9]){10}$/;
+    let regex = /^([0-9]*[.])[0-9]$/;
+    let str = fsem.value;
+    
+    console.log(regex, str);
+     
+    if(str >= 0 && str <= 10 ){
+        console.log('Your phone is valid');
+        fsem.classList.remove('is-invalid');
+        validPhone = true;
+    }
+    else{
+        console.log('Your phone is not valid');
+        fsem.classList.add('is-invalid');
+        validPhone = false;
+        
+    }
+})
+const fper = document.getElementById('fper');
+fper.addEventListener('blur', ()=>{
+    console.log("phone is blurred");
+    // Validate phone here
+    //let regex = /^([0-9]){10}$/;
+    let regex = /^([0-9]*[.])[0-9]$/;
+    let str = fper.value;
+    
+    console.log(regex, str);
+     
+    if(str >= 0 && str <= 100 ){
+        console.log('Your phone is valid');
+        fper.classList.remove('is-invalid');
+        validPhone = true;
+    }
+    else{
+        console.log('Your phone is not valid');
+        fper.classList.add('is-invalid');
+        validPhone = false;
+        
+    }
+})
+const ssem = document.getElementById('ssem');
+ssem.addEventListener('blur', ()=>{
+    console.log("phone is blurred");
+    // Validate phone here
+    //let regex = /^([0-9]){10}$/;
+    let regex = /^([0-9]*[.])[0-9]$/;
+    let str = ssem.value;
+    
+    console.log(regex, str);
+     
+    if(str >= 0 && str <= 10 ){
+        console.log('Your phone is valid');
+        ssem.classList.remove('is-invalid');
+        validPhone = true;
+    }
+    else{
+        console.log('Your phone is not valid');
+        ssem.classList.add('is-invalid');
+        validPhone = false;
+        
+    }
+})
+
+const sper = document.getElementById('sper');
+sper.addEventListener('blur', ()=>{
+    console.log("phone is blurred");
+    // Validate phone here
+    //let regex = /^([0-9]){10}$/;
+    let regex = /^([0-9]*[.])[0-9]$/;
+    let str = sper.value;
+    
+    console.log(regex, str);
+     
+    if(str >= 0 && str <= 100 ){
+        console.log('Your phone is valid');
+        sper.classList.remove('is-invalid');
+        validPhone = true;
+    }
+    else{
+        console.log('Your phone is not valid');
+        sper.classList.add('is-invalid');
+        validPhone = false;
+        
+    }
+})
+const tsem = document.getElementById('tsem');
+tsem.addEventListener('blur', ()=>{
+    console.log("phone is blurred");
+    // Validate phone here
+    //let regex = /^([0-9]){10}$/;
+    let regex = /^([0-9]*[.])[0-9]$/;
+    let str = tsem.value;
+    
+    console.log(regex, str);
+     
+    if(str >= 0 && str <= 10 ){
+        console.log('Your phone is valid');
+        tsem.classList.remove('is-invalid');
+        validPhone = true;
+    }
+    else{
+        console.log('Your phone is not valid');
+        tsem.classList.add('is-invalid');
+        validPhone = false;
+        
+    }
+})
+
+const tper = document.getElementById('tper');
+tper.addEventListener('blur', ()=>{
+    console.log("phone is blurred");
+    // Validate phone here
+    //let regex = /^([0-9]){10}$/;
+    let regex = /^([0-9]*[.])[0-9]$/;
+    let str = tper.value;
+    
+    console.log(regex, str);
+     
+    if(str >= 0 && str <= 100 ){
+        console.log('Your phone is valid');
+        tper.classList.remove('is-invalid');
+        validPhone = true;
+    }
+    else{
+        console.log('Your phone is not valid');
+        tper.classList.add('is-invalid');
+        validPhone = false;
+        
+    }
+})
+const foursem = document.getElementById('foursem');
+foursem.addEventListener('blur', ()=>{
+    console.log("phone is blurred");
+    // Validate phone here
+    //let regex = /^([0-9]){10}$/;
+    let regex = /^([0-9]*[.])[0-9]$/;
+    let str = foursem.value;
+    
+    console.log(regex, str);
+     
+    if(str >= 0 && str <= 10 ){
+        console.log('Your phone is valid');
+        foursem.classList.remove('is-invalid');
+        validPhone = true;
+    }
+    else{
+        console.log('Your phone is not valid');
+        foursem.classList.add('is-invalid');
+        validPhone = false;
+        
+    }
+})
+
+const fourper = document.getElementById('fourper');
+fourper.addEventListener('blur', ()=>{
+    console.log("phone is blurred");
+    // Validate phone here
+    //let regex = /^([0-9]){10}$/;
+    let regex = /^([0-9]*[.])[0-9]$/;
+    let str = fourper.value;
+    
+    console.log(regex, str);
+     
+    if(str >= 0 && str <= 100 ){
+        console.log('Your phone is valid');
+        fourper.classList.remove('is-invalid');
+        validPhone = true;
+    }
+    else{
+        console.log('Your phone is not valid');
+        fourper.classList.add('is-invalid');
+        validPhone = false;
+        
+    }
+})
+const sem5 = document.getElementById('sem5');
+sem5.addEventListener('blur', ()=>{
+    console.log("phone is blurred");
+    // Validate phone here
+    //let regex = /^([0-9]){10}$/;
+    let regex = /^([0-9]*[.])[0-9]$/;
+    let str = sem5.value;
+    
+    console.log(regex, str);
+     
+    if(str >= 0 && str <= 10 ){
+        console.log('Your phone is valid');
+        sem5.classList.remove('is-invalid');
+        validPhone = true;
+    }
+    else{
+        console.log('Your phone is not valid');
+        sem5.classList.add('is-invalid');
+        validPhone = false;
+        
+    }
+})
+
+const sem5per = document.getElementById('sem5per');
+sem5per.addEventListener('blur', ()=>{
+    console.log("phone is blurred");
+    // Validate phone here
+    //let regex = /^([0-9]){10}$/;
+    let regex = /^([0-9]*[.])[0-9]$/;
+    let str = sem5per.value;
+    
+    console.log(regex, str);
+     
+    if(str >= 0 && str <= 100 ){
+        console.log('Your phone is valid');
+        sem5per.classList.remove('is-invalid');
+        validPhone = true;
+    }
+    else{
+        console.log('Your phone is not valid');
+        sem5per.classList.add('is-invalid');
+        validPhone = false;
+        
+    }
+})
+const cgpa = document.getElementById('cgpa');
+cgpa.addEventListener('blur', ()=>{
+    console.log("phone is blurred");
+    // Validate phone here
+    //let regex = /^([0-9]){10}$/;
+    let regex = /^([0-9]{1,2})$/;
+    let str = cgpa.value;
+    
+    console.log(regex, str);
+     
+    if(str >= 0 && str <= 10){
+        console.log('Your phone is valid');
+        cgpa.classList.remove('is-invalid');
+        validPhone = true;
+    }
+    else{
+        console.log('Your phone is not valid');
+        cgpa.classList.add('is-invalid');
+        validPhone = false;
+        
+    }
+})
+const cgpaper = document.getElementById('cgpaper');
+cgpaper.addEventListener('blur', ()=>{
+    console.log("phone is blurred");
+    // Validate phone here
+    //let regex = /^([0-9]){10}$/;
+    let regex = /^[0-9]{1,2}$/;
+    let str = cgpaper.value;
+    
+    console.log(regex, str);
+     
+    if(str >= 0 && str <= 100){
+        console.log('Your phone is valid');
+        cgpaper.classList.remove('is-invalid');
+        validPhone = true;
+    }
+    else{
+        console.log('Your phone is not valid');
+        cgpaper.classList.add('is-invalid');
+        validPhone = false;
+        
+    }
+})
+const credits  = document.getElementById('credits');
+credits.addEventListener('blur', ()=>{
+    console.log("phone is blurred");
+    // Validate phone here
+    //let regex = /^([0-9]){10}$/;
+    let regex = /^[0-9]{1,3}$/;
+    let str = credits.value;
+    var num1 = 0;
+    var num2 = 175;
+    
+    console.log(regex, str);
+     
+    if (str >= num1 && str <= num2){
+        console.log('Your phone is valid');
+        credits.classList.remove('is-invalid');
+        validPhone = true;
+    }
+    else{
+        console.log('Your phone is not valid');
+        credits.classList.add('is-invalid');
+        validPhone = false;
+        
+    }
+})
+const cleared  = document.getElementById('cleared');
+cleared.addEventListener('blur', ()=>{
+    console.log("phone is blurred");
+    // Validate phone here
+    //let regex = /^([0-9]){10}$/;
+    let regex = /^([0-9]){0,2}$/;
+    let str = cleared.value;
+    var num1 = 0;
+    var num2 = 20;
+    
+    console.log(regex, str);
+     
+    if (str >= num1 && str <= num2){
+        console.log('Your phone is valid');
+        cleared.classList.remove('is-invalid');
+        validPhone = true;
+    }
+    else{
+        console.log('Your phone is not valid');
+        cleared.classList.add('is-invalid');
+        validPhone = false;
+        
+    }
+})
+const current  = document.getElementById('current');
+current.addEventListener('blur', ()=>{
+    console.log("phone is blurred");
+    // Validate phone here
+    //let regex = /^([0-9]){10}$/;
+    let regex = /^([0-9]){0,2}$/;
+    let str = current.value;
+    var num1 = 0;
+    var num2 = 20;
+    
+    console.log(regex, str);
+     
+    if (str >= num1 && str <= num2){
+        console.log('Your phone is valid');
+        current.classList.remove('is-invalid');
+        validPhone = true;
+    }
+    else{
+        console.log('Your phone is not valid');
+        current.classList.add('is-invalid');
+        validPhone = false;
+        
+    }
+})
+const ssc_percentage  = document.getElementById('ssc_percentage');
+ssc_percentage.addEventListener('blur', ()=>{
+    console.log("phone is blurred");
+    // Validate phone here
+    //let regex = /^([0-9]){10}$/;
+    let regex = /^([0-9]*[.])[0-9]$/;
+    let str = ssc_percentage.value;
+    
+    console.log(regex, str);
+     
+    if(str >= 0 && str <= 100 ){
+        console.log('Your phone is valid');
+        ssc_percentage.classList.remove('is-invalid');
+        validPhone = true;
+    }
+    else{
+        console.log('Your phone is not valid');
+        ssc_percentage.classList.add('is-invalid');
+        validPhone = false;
+        
+    }
+})
+const ssc_name  = document.getElementById('ssc_name');
+ssc_name.addEventListener('blur', ()=>{
+    console.log("phone is blurred");
+    // Validate phone here
+    //let regex = /^([0-9]){10}$/;
+    let regex = /^[a-zA-Z]([0-9a-zA-Z]){2,10}$/;
+    let str = ssc_name.value;
+    
+    console.log(regex, str);
+     
+    if(regex.test(str)){
+        console.log('Your phone is valid');
+        ssc_name.classList.remove('is-invalid');
+        validPhone = true;
+    }
+    else{
+        console.log('Your phone is not valid');
+        ssc_name.classList.add('is-invalid');
+        validPhone = false;
+        
+    }
+})
+
+const ssc_year = document.getElementById('ssc_year');
+//let validyop = false;
+ssc_year.addEventListener('blur', ()=>{
+    console.log("phone is blurred");
+    // Validate phone here
+    //let regex = /^([0-9]){10}$/;
+    let regex = /^([0-9]){4}$/;
+    let str = ssc_year.value;
+    const d1 = new Date();
+    let years = d1.getFullYear();
+    console.log(years);
+    var years1 = years - 50;
+    var years2 = years - 5;
+    console.log(years1);
+    console.log(regex, str);
+     
+    if (str >= years1 && str <= years2){
+        console.log('Your phone is valid');
+        ssc_year.classList.remove('is-invalid');
+        validyop = true;
+    }
+    else{
+        console.log('Your phone is not valid');
+        ssc_year.classList.add('is-invalid');
+        validyop = false;
+        
+    }
+})
+const hsc_percentage  = document.getElementById('hsc_percentage');
+hsc_percentage.addEventListener('blur', ()=>{
+    console.log("phone is blurred");
+    // Validate phone here
+    //let regex = /^([0-9]){10}$/;
+    let regex = /^([0-9]*[.])[0-9]$/;
+    let str = hsc_percentage.value;
+    
+    console.log(regex, str);
+     
+    if(str >= 0 && str <= 100 ){
+        console.log('Your phone is valid');
+        hsc_percentage.classList.remove('is-invalid');
+        validPhone = true;
+    }
+    else{
+        console.log('Your phone is not valid');
+        hsc_percentage.classList.add('is-invalid');
+        validPhone = false;
+        
+    }
+})
+const hsc_name  = document.getElementById('hsc_name');
+hsc_name.addEventListener('blur', ()=>{
+    console.log("phone is blurred");
+    // Validate phone here
+    //let regex = /^([0-9]){10}$/;
+    let regex = /^[a-zA-Z]([0-9a-zA-Z]){2,10}$/;
+    let str = hsc_name.value;
+    
+    console.log(regex, str);
+     
+    if(regex.test(str)){
+        console.log('Your phone is valid');
+        hsc_name.classList.remove('is-invalid');
+        validPhone = true;
+    }
+    else{
+        console.log('Your phone is not valid');
+        hsc_name.classList.add('is-invalid');
+        validPhone = false;
+        
+    }
+})
+const hsc_qualifiedYear = document.getElementById('hsc_qualifiedYear');
+//let validyop = false;
+hsc_qualifiedYear.addEventListener('blur', ()=>{
+    console.log("phone is blurred");
+    // Validate phone here
+    //let regex = /^([0-9]){10}$/;
+    let regex = /^([0-9]){4}$/;
+    let str = hsc_qualifiedYear.value;
+    const d1 = new Date();
+    let years = d1.getFullYear();
+    console.log(years);
+    var years1 = years - 50;
+    var years2 = years - 3;
+    console.log(years1);
+    console.log(regex, str);
+     
+    if (str >= years1 && str <= years2){
+        console.log('Your phone is valid');
+        hsc_qualifiedYear.classList.remove('is-invalid');
+        validyop = true;
+    }
+    else{
+        console.log('Your phone is not valid');
+        hsc_qualifiedYear.classList.add('is-invalid');
+        validyop = false;
+        
+    }
+})
+const diploma_percentage  = document.getElementById('diploma_percentage');
+diploma_percentage.addEventListener('blur', ()=>{
+    console.log("phone is blurred");
+    // Validate phone here
+    //let regex = /^([0-9]){10}$/;
+    let regex = /^([0-9]*[.])[0-9]$/;
+    let str = diploma_percentage.value;
+    
+    console.log(regex, str);
+    if (str == ""){
+        document.getElementById("diploma_percentage").value = "NONE";
+        console.log('Your name is valid');
+        diploma_percentage.classList.remove('is-invalid');
+        validUser = true;
+
+
+    }
+    else if (str == "NONE"){
+
+        console.log('Your phone is valid');
+        dipCET_percentage.classList.remove('is-invalid');
+        validyop = true;
+
+    }
+
+
+    else if(str >= 0 && str <= 100 )
+    {
+        console.log('Your name is valid');
+        diploma_percentage.classList.remove('is-invalid');
+        validUser = true;
+    }
+    else{
+        console.log('Your name is not valid');
+        diploma_percentage.classList.add('is-invalid');
+        validUser = false;
+        
+    }
+    
+})
+const dipCET_percentage  = document.getElementById('dipCET_percentage');
+dipCET_percentage.addEventListener('blur', ()=>{
+    console.log("phone is blurred");
+    // Validate phone here
+    //let regex = /^([0-9]){10}$/;
+    let regex = /^([0-9]*[.])[0-9]$/;
+    let str = dipCET_percentage.value;
+    
+    console.log(regex, str);
+    if (str == ""){
+
+        document.getElementById("dipCET_percentage").value = "NONE";
+        console.log('Your phone is valid');
+        dipCET_percentage.classList.remove('is-invalid');
+        validPhone = true;
+
+
+    }
+    else if (str == "NONE"){
+
+        console.log('Your phone is valid');
+        dipCET_percentage.classList.remove('is-invalid');
+        validyop = true;
+
+    }
+
+    else if(str >= 0 && str <= 100 )
+    {
+        console.log('Your phone is valid');
+        dipCET_percentage.classList.remove('is-invalid');
+        validPhone = true;
+    }
+    else{
+        console.log('Your phone is not valid');
+        dipCET_percentage.classList.add('is-invalid');
+        validPhone = false;
+        
+    }
+})
+const diploma_name  = document.getElementById('diploma_name');
+diploma_name.addEventListener('blur', ()=>{
+    console.log("phone is blurred");
+    // Validate phone here
+    //let regex = /^([0-9]){10}$/;
+    let regex = /^[a-zA-Z]([0-9a-zA-Z]){2,10}$/;
+    let str = diploma_name.value;
+    
+    console.log(regex, str);
+    if (str == ""){
+
+        document.getElementById("diploma_name").value = "NONE";
+        console.log('Your phone is valid');
+        diploma_name.classList.remove('is-invalid');
+        validPhone = true;
+
+
+    }
+    else if (str == "NONE"){
+
+        console.log('Your phone is valid');
+        diploma_name.classList.remove('is-invalid');
+        validyop = true;
+
+    }
+    else if (regex.test(str))
+    {
+        console.log('Your phone is valid');
+        diploma_name.classList.remove('is-invalid');
+        validPhone = true;
+    }
+    else{
+        console.log('Your phone is not valid');
+        diploma_name.classList.add('is-invalid');
+        validPhone = false;
+        
+    }
+})
+const dipQualified_year = document.getElementById('dipQualified_year');
+//let validyop = false;
+dipQualified_year.addEventListener('blur', ()=>{
+    console.log("phone is blurred");
+    // Validate phone here
+    //let regex = /^([0-9]){10}$/;
+    let regex = /^([0-9]){4}$/;
+    let str = dipQualified_year.value;
+    const d1 = new Date();
+    let years = d1.getFullYear();
+    console.log(years);
+    var years1 = years - 50;
+    var years2 = years - 5;
+    console.log(years1);
+    console.log(regex, str);
+    if (str == ""){
+
+        document.getElementById("dipQualified_year").value = "NONE";
+        console.log('Your phone is valid');
+        dipQualified_year.classList.remove('is-invalid');
+        validyop = true;
+
+
+    }
+    else if (str == "NONE"){
+
+        console.log('Your phone is valid');
+        dipQualified_year.classList.remove('is-invalid');
+        validyop = true;
+
+    }
+    else if(str >= years1 && str <= years2)
+    {
+        console.log('Your phone is valid');
+        dipQualified_year.classList.remove('is-invalid');
+        validyop = true;
+    }
+    else{
+        console.log('Your phone is not valid');
+        dipQualified_year.classList.add('is-invalid');
+        validyop = false;
+        
+    }
+})
+const email  = document.getElementById('email');
+email.addEventListener('blur', ()=>{
+    console.log("phone is blurred");
+    // Validate phone here
+    //let regex = /^([0-9]){10}$/;
+    let regex = /^([_\-\.0-9a-z]+)@([_\-\.0-9a-z]+)\.([a-z]){2,7}$/;
+    let str = email.value;
+    
+    console.log(regex, str);
+     
+    if(regex.test(str)){
+        console.log('Your phone is valid');
+        email.classList.remove('is-invalid');
+        validPhone = true;
+    }
+    else{
+        console.log('Your phone is not valid');
+        email.classList.add('is-invalid');
+        validPhone = false;
+        
+    }
+})
+</script>
+</div>
+</body>
+</html>
+{%endblock%}

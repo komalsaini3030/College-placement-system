@@ -1,0 +1,98 @@
+{% extends 'base.html'%}
+    {% block content%}
+    {% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+<style type="text/css">
+        table {
+            width: 100%;
+            border: 1px solid black;
+        }
+
+            table td, table th {
+                border: 1px solid black;
+            }
+
+            table .FirstColumn {
+                background-color: skyblue;
+            }
+
+            table thead tr {
+                background-color: blue;
+            }
+
+            table tbody.secondHeader tr {
+                background-color:  #9999dd;
+            }
+    </style>
+    <div style="background: url('/media/bg.pg'); background-repeat:no-repeat;background-size:cover;  height:850px; width: 100%;">
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<h3 style="color:black;text-align: center;">All Companies</h3>
+<body>
+    <table class="table table-hover" >
+        <col>
+        <col>
+        <col>
+        <colgroup span="4"></colgroup>
+        <col>
+        <tbody class="FirstColumn">
+        <tr style="color:black;font-weight: bold;">
+            <th rowspan="2" style="vertical-align : middle;text-align:center;">Company Name</th>
+            <th rowspan="2" style="vertical-align : middle;text-align:center;">CTC</th>
+            <th rowspan="2" style="vertical-align : middle;text-align:center;">CATEGORY</th>
+            <th colspan="3" style="horizontal-align : middle;text-align:center; width: 50%;">ACTIVITY DATES</th>
+          <!--  <th rowspan="2" style="vertical-align : middle;text-align:center;">FILES ATTACHED</th>
+            <th rowspan="2" style="vertical-align : middle;text-align:center;">OTHER INFO</th>
+            <th rowspan="2" style="vertical-align : middle;text-align:center;">CGPA</th>
+            <th rowspan="2" style="vertical-align : middle;text-align:center;">STREAM</th>-->
+        </tr>
+        <tr>
+            <th scope="col">Pre-Placement</th>
+            <th scope="col">Test Date</th>
+            <th scope="col">Interview Date</th>
+        </tr>
+    </tbody>
+        {%for i in details%}
+        <tbody class="secondHeader">
+            <tr style="color: blue;text-align: center;">
+                <td>{{i.CompanyName}}</td>
+                <td>{{i.Package}}</td>
+                <td>{{i.CATEGORY}}</td>
+                <td>{{i.Pre_Placement}}</td>
+                <td>{{i.Test_Date}}</td>
+                <td>{{i.Interview_Date}}</td>
+               <!-- <td><a href="{{i.File.url}}" value = "{{i.File.url}}" >{{i.File}}</a></td>
+                
+                <td>{{i.Additional_Information}}</td>
+                <td>{{i.CGPA}}</td>
+
+                <td>{{i.CSl}},{{i.IS}},{{i.ECE}},{{i.EEE}},{{i.MECH}},{{i.IP}},{{i.OTHERS}}</td>-->
+                </tr>
+        </tbody>
+        {%endfor%}
+                        
+        
+    </table>
+</body>
+
+
+
+
+            
+
+</div>
+
+{% endblock %}

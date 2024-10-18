@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>Campus Placement System</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+  <!-- Optional JavaScript; choose one of the two! -->
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <!script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/
+  bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"-->
+<!-- jQuery library -->
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <!<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+<style>
+.dropbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 350px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+</style>
+</head>
+  <body>
+   
+
+    
+    <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <div class="headingOne">
+        <!--<a class="navbar-brand" href="#">
+          <img style="max-width:100px; margin-top: -12px;" src="/media/Bot.jpg/" width="50" height="50" class="d-inline-block align-top" alt="">
+        </a>-->
+        <a class="navbar-brand" href="#" style="color:blueviolet;font-style:initial;"><b>Campus Placement System</b></a>
+      </div>
+       {% if  request.session.login == 'Yes' %}
+       <ul class="navbar-nav ms-auto">
+        
+        {% else %}
+          <ul class="navbar-nav ms-auto" >
+            <li class="nav-item dropdown">
+              <a style="color:brown;font-weight: bold;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Login
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="{% url 'AdminLogin'%}">Admin</a></li>
+                <li><a class="dropdown-item" href="{%url 'Student_Login'%}">Student</a></li>
+              </li>
+               <li><a class="dropdown-item" href="{% url 'College_Login'%}">College</a></li>
+                
+              </li>
+               </ul>
+              {% endif %} 
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    
+        </ul>
+      </div>
+    </div>
+</nav>
+
+      {% if  request.session.type_id  == 'User' %}
+        <div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+          <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white ">
+           <span class="fs-5 d-none d-sm-inline mx-1" style="color:white;font-weight:bold;">Hi, {{request.session.UserType}} </span>
+         </div>
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <span class="fs-5 d-none d-sm-inline">Menu</span>
+                </a>
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                    
+                    <li>
+                      <!--
+                      <div class="dropdown">
+                        <a class="dropdown"style="text-decoration: none;">&nbsp;Placements</a>
+                        <div class="dropdown-content">
+                          <a href="#"> COMPUTER SCIENCE AND ENGINEERING </a>
+                          <a href="#" > INFORMATION SCIENCE AND  ENGINEERING</a>
+                          <a href="#" >  ELECTRONICS AND COMMUNICATION ENGINEERING  </a>
+                          <a href="#"> ELECTRICAL AND ELECTRONICS ENGINEERING </a>
+                          <a href="#" > CIVIL ENGINEERING  </a>
+                          <a href="#" > MECHANICAL ENGINEERING  </a>
+                          <a href="#" > INDUSTRIAL AND PRODUCTION ENGINEERING </a>
+
+
+
+                          
+                        </div>
+                      </div>-->
+
+                      
+                    
+                    <li class="nav-item">
+                        <a href="{%url 'home' %}" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">HOME</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="{% url 'Eligible_Company_List'%}" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">ELIGIBLE COMPANY LIST</span> </a>
+                            
+                    </li>
+
+                    <li>
+                        <a href="{% url 'Profile'%}"  class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">PROFILE</span> </a>
+                            
+                    </li>
+                    <li>
+                        <a href="{% url 'OffCampus_User' %}" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">
+                            OFF-CAMPUS DETAILS &nbsp;
+                             </span> </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'Placements_User'%}" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">PLACEMENTS</span> </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'Placement_Policies'%}" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">PLACEMENT POLICIES </span> </a>
+                    </li>
+                    
+
+                    <li>
+                        <a href="{% url 'Change_Password'%}" class="nav-link px-0 align-middle"><span class="ms-1 d-none d-sm-inline">CHANGE PASSWORD</span></a>
+                    </li>
+                    <li>
+                        <a href = "{% url 'Logout'%}" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">LOGOUT</span> </a>
+                    </li>
+                </ul>
+                
+                <div class="dropdown pb-4">
+                    
+                       
+                        
+                    </a>
+                   <!-- <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                        <li><a class="dropdown-item" href="home">New project...</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>-->
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        {% elif request.session.type_id  == 'College' %}
+        <div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+          <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white ">
+           <span class="fs-5 d-none d-sm-inline mx-1" style="color:white;font-weight:bold;">Hi, {{request.session.UserType}} </span>
+         </div>
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <span class="fs-5 d-none d-sm-inline">Menu</span>
+                </a>
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                    <li>
+                      <div class="dropdown">
+                        <a class="dropdown"style="text-decoration: none;color: blue;">&nbsp;Home</a>
+                        <div class="dropdown-content">
+                          <a href="{% url 'home'%}"> On Going Recruitments</a>
+                          <a href="{% url 'All_Companies'%}" > All Companies</a>
+                          
+
+
+
+                          
+                        </div>
+                      </div>
+                    <li>
+                    <li class="nav-item">
+                        <a href="{%url 'Placement_Admin' %}" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Student Details</span>
+                        </a>
+                    </li>
+            <!--        <li>
+                      <div class="dropdown">
+                        <a class="dropdown"style="text-decoration: none;">&nbsp;Student Details</a>
+                        <div class="dropdown-content">
+                          <a href="{% url 'COMPUTER_SCIENCE_AND_ENGINEERING'%}"> COMPUTER SCIENCE AND ENGINEERING </a>
+                          <a href="{% url 'INFORMATION_SCIENCE_AND_ENGINEERING'%}" > INFORMATION SCIENCE AND  ENGINEERING</a>
+                          <a href="{% url 'ELECTRONICS_AND_COMMUNICATION_ENGINEERING'%}" >  ELECTRONICS AND COMMUNICATION ENGINEERING  </a>
+                          <a href="#"> ELECTRICAL AND ELECTRONICS ENGINEERING </a>
+                          <a href="#" > CIVIL ENGINEERING  </a>
+                          <a href="#" > MECHANICAL ENGINEERING  </a>
+                          <a href="#" > INDUSTRIAL AND PRODUCTION ENGINEERING </a>
+
+
+
+                          
+                        </div>
+                      </div>
+                    <li>-->
+                        <a href="{%url 'index'%}" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Statistics</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'View_Off_Campus_Details'%}" class="nav-link px-0 align-middle ">
+                            <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">OffCampus Details</span></a>
+                       
+                    </li>
+                   <!-- <li>
+                        <a href="#submenu3" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">List of companies visited</span> </a>
+                            
+                    </li>-->
+                    <li>
+                        <a href="{% url 'Placement_Policies'%}" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Placement Policy</span> </a>
+                    </li>
+                    <li>
+                        <a href = "{% url 'Logout'%}" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Logout</span> </a>
+                    </li>
+                </ul>
+                
+                <div class="dropdown pb-4">
+                    
+                       
+                        
+                    </a>
+                   <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                        <li><a class="dropdown-item" href="home">New project...</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    
+      {% elif  request.session.type_id  == 'Admin' %}
+     <div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+          <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white ">
+           <span class="fs-5 d-none d-sm-inline mx-1" style="color:white;font-weight:bold;">Hi, {{request.session.UserType}} </span>
+         </div>
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <span class="fs-5 d-none d-sm-inline">Menu</span>
+                </a>
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                    
+                    <li>
+                      <!--
+                      <div class="dropdown">
+                        <a class="dropdown"style="text-decoration: none;">&nbsp;Placements</a>
+                        <div class="dropdown-content">
+                          <a href="#"> COMPUTER SCIENCE AND ENGINEERING </a>
+                          <a href="#" > INFORMATION SCIENCE AND  ENGINEERING</a>
+                          <a href="#" >  ELECTRONICS AND COMMUNICATION ENGINEERING  </a>
+                          <a href="#"> ELECTRICAL AND ELECTRONICS ENGINEERING </a>
+                          <a href="#" > CIVIL ENGINEERING  </a>
+                          <a href="#" > MECHANICAL ENGINEERING  </a>
+                          <a href="#" > INDUSTRIAL AND PRODUCTION ENGINEERING </a>
+
+
+
+                          
+                        </div>
+                      </div>-->
+                     <li class="nav-item">
+                        <a href="{%url 'home' %}" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                        </a>
+                    </li>
+                    <!--<li>
+                        <a href="{%url 'AddCompany'%}" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline"> ADD COMPANY DETAILS </span></a>
+                    </li>-->
+                    
+                    <li>
+                        <a href="{%url 'DisplayStudent'%}" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">DISPLAY STUDENT DETAILS</span> </a>
+                            
+                    </li>
+
+                    <li>
+                        <a href="{%url 'Add_Off_Campus_Details'%}"  class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">ADD OFF-CAMPUS PLACED &nbsp;STUDENTS DETAILS</span> </a>
+                            
+                    </li>
+                    <li>
+                        <a href="{%url 'Placement_Admin'%}" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">PLACEMENT</span> </a>
+                    </li>
+                    <li>
+                        <a href="{%url 'View_Off_Campus_Details'%}" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">
+                            VIEW OFF-CAMPUS &nbsp;
+                            PLACED STUDENTS  DETAILS </span> </a>
+                    </li>
+                    <li>
+                        <a href="{%url 'index'%}" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline"> PLACEMENT STATISTICS  </span> </a>
+                    </li>
+                    <li>
+                        <a href="{%url 'Manage_Company'%}" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">MANAGE COMPANY  </span> </a>
+                    </li>
+
+                    <li>
+                        <a href="{%url 'Placement_Policies'%}" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline"> PLACEMENT POLICIES  </span> </a>
+                    </li>
+                    <li>
+                        <a href="{%url 'Forecasting'%}" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline"> FORECASTING </span> </a>
+                    </li>
+                     
+
+                    <li>
+                        <a href = "{% url 'Logout'%}" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Logout</span> </a>
+                    </li>
+                </ul>
+                
+                <div class="dropdown pb-4">
+                    
+                       
+                        
+                    </a>
+                   <!-- <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                        <li><a class="dropdown-item" href="home">New project...</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>-->
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+      {% endif %}
+    
+     
+
+  {% block content %}
+
+  {% endblock %}
+
+
+<footer style="padding: 10px 20px;background-color: #FFFFFF;
+background-image: linear-gradient(315deg, #FFFFFF 100%, #000000 0%);;color:blueviolet;height:44px;position:fixed;bottom:0; width: 100%;">
+<p style="font-size: small; text-align: right;font-weight: bold;">Company ©2022. All rights reserved.</p>
+
+</footer>
+    
+</html>

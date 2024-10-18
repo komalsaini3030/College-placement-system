@@ -1,0 +1,149 @@
+{% extends 'base.html'%}
+    {% block content%}
+    {% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+<div style="background: url('/media/bg5.jpg'); background-repeat:no-repeat;background-size:cover;  height:1450px; width: 100%;">
+	<br>
+<div class = "col-md-12" style="padding-right:300px"><div class="container" style="width:50%;background-color:white;"> 
+	<br>
+	<h3 style="text-align:center;color:black;">Add Company Details</h3>
+	<br>
+	<form action="/AddCompany/" method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		<div class="mb-4 row">
+			<label for="staticEmail" class="col-sm-5 col-form-label">COMPANY Name:</label>
+			<div class="col-sm-12">
+				<input type="text" class="form-control" id="inputPassword" name="CompanyName" required>
+			</div>
+		</div>
+		<div class="mb-5 row">
+			<label for="inputPassword" class="col-sm-5 col-form-label">PACKAGE/CTC:</label>
+			<div class="col-sm-12">
+				<input type="text" class="form-control" id="inputPassword" name="Package">
+			</div>
+		</div>
+		<div class="mb-5 row">
+			<label for="staticEmail" class="col-sm-5 col-form-label">FILE ATTACHMENTS:</label>
+			<div class="col-sm-12">
+				<input type="file" class="form-control" id="inputPassword" name="File" required >
+			</div>
+		</div>
+		<div class="mb-5 row">
+			<label for="inputPassword" class="col-md-5 col-form-label">ACTIVITY DATES:</label>
+			<div class="col-sm-12">	
+				<div class="row">
+					<div class="col-12">
+						<div class="row">
+							<div class="col-6">
+								<label>PRE PLACEMENT TALK DATE</label>
+							</div>
+							<div class="col-6">
+								<input type="date" class="form-control" id="inputPassword" name="Pre_Placement">
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-6">
+								<label>TEST DATE &nbsp;</label>
+							</div>
+							<div class="col-6">
+								<input type="date" class="form-control" id="inputPassword" name="Test_Date">
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-6">
+								<label>INTERVIEW DATES</label>
+							</div>
+							<div class="col-6">
+								<input type="date" class="form-control" id="inputPassword" name="Interview_Date">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="mb-5 row">
+			<label for="inputPassword" class="col-sm-5 col-form-label">ADDITIONAL  INFORMATION:</label>
+			<div class="col-sm-12">
+				<input type="text" class="form-control" id="inputPassword" name="Additional_Information">
+			</div>
+		</div>
+		<div class="mb-5 row">
+			<label for="inputPassword" class="col-md-5 col-form-label">ELIGIBILITY CRITERIA: :</label>
+			<div class="col-sm-12">	
+				<div class="row">
+					<div class="col-12">
+						<div class="row">
+							<div class="col-2">
+								<label>CGPA:</label>
+							</div>
+							<div class="col-10">
+								<input type="text" class="form-control" id="inputPassword" name="CGPA">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-2">
+								<label>STREAM :</label>
+							</div>
+							<div class="col-10">
+								<input type="checkbox" id="CSE" name="checks[]" value="CSE">
+								<label for="CSE"> CSE</label><br>
+								<input type="checkbox" id="IS" name="checks[]" value="IS">
+								<label for="IS"> IS</label><br>
+								<input type="checkbox" id="ECE" name="checks[]" value="ECE">
+								<label for="ECE">ECE</label><br>
+								<input type="checkbox" id="EEE" name="checks[]" value="EEE">
+								<label for="EEE">EEE</label><br>
+								<input type="checkbox" id="MECH" name="checks[]" value="MECH">
+								<label for="MECH">MECH</label><br>
+								<input type="checkbox" id="IP" name="checks[]" value="IP">
+								<label for="IP"> IP</label><br>
+								<input type="checkbox" id="CIVIL" name="checks[]" value="CIVIL">
+								<label for="CIVIL"> CIVIL</label><br>
+								<input type="checkbox" id="ALL_BRANCHES" name="checks[]" value="ALL_BRANCHES">
+								<label for="ALL_BRANCHES"> ALL BRANCHES</label><br>
+								<label for="Others">Others</label>
+								<input type="text" id="Others" name="Others">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="mb-5 row">
+			<label for="inputPassword" class="col-md-5 col-form-label">CATEGORIES:</label>
+			<div class="col-sm-12">	
+				<div class="col-sm-12">
+					<select class="form-control" name="CATEGORY" multiple>
+						<option value="MASS">MASS</option>
+						<option value="CORE">CORE</option>
+						<option value="DREAM">DREAM</option>
+						<option value="OPEN DREAM">OPEN DREAM</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	
+		<div class="col-md-12">
+			<center>
+				<input type="submit" value="ADD" class="btn btn-outline-dark">
+			</center>
+		</div>
+		<br>
+	</div>
+</form>
+</div>
+<br>
+</div>
+
+
+</div>
+</div>
+
+{% endblock %}

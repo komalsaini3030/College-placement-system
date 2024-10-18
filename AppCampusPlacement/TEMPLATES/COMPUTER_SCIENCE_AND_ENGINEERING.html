@@ -1,0 +1,29 @@
+{% extends 'base.html'%}
+    {% block content%}
+    {% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+
+   <div>
+       <table>
+           <tbody>
+               <tr>
+                   <th>Student</th>
+               </tr>
+           </tbody>
+           <tbody>
+                {%for i in cs%}
+               <tr>
+                    {% if i.CSI == "CSI"%}
+                   <td>{{i.CSI}}</td>
+                    {%endif%}
+               </tr>
+               {%endfor%}
+           </tbody>
+       </table>
+   </div>
+{% endblock %}

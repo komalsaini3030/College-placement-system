@@ -1,0 +1,278 @@
+{% extends 'base.html'%}
+    {% block content%}
+    {% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+    <div style="background: url('/media/bg5.jpg'); background-repeat:no-repeat;background-size:cover;  height:900px; width: 100%;">
+    <div class="container">
+        <br>    
+        <br>
+        <p><h3>&emsp;Job Policy</h3></p>
+        <br>
+        <br>
+        <div class="d-flex justify-content-start gap-2">
+          <div>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
+                CATEGORY REGULATIONS
+              </button>
+            <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">CATEGORY REGULATIONS</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>
+                       <p> ● Mass: Companies that recruit students with generic skill sets with a generic hiring process. </p>
+
+                        <p>● Core: Companies that recruit for branch and skill-specific recruitments</p>
+
+                         <p>● Dream: Product-based companies or which come under top 500 Fortune Companies or companies which offer salaries more than 8 LPA.</p> 
+
+                         <p>● Open Dream: more than 12 lpa Ladder Policy: Student placed in mass is eligible for Core, Dream and Open Dream. Student placed in core is eligible for Dream and open dream. Student placed in dream is eligible for open dream</p>
+                    </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>    
+        </div>
+
+          <div>
+        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+           DISCIPLINARY POLICY
+        </button>
+
+           <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">DISCIPLINARY POLICY </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p>
+                   <p>
+                        ●    Dress Code: Student who has not followed the dress code will be suspended for
+                    two days from the placement activity.
+                   </p>
+                   <p>
+                      ●   Data Manipulation: A student found providing wrong/ manipulating the data
+                    will be suspended for sixty days from placement activity.
+                   </p>
+                   <p>
+                      ●   Misbehaviour: Students found misbehaving with the company recruitment team or
+                    faculty of training and placement department will be suspended for thirty days
+                    from placement activity.
+                   </p>
+                    <p>
+                      ●   Malpractice/Copying: Students found copying by any means will be
+                    suspended from the placement activity for sixty days
+                    </p>
+
+                </p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
+         RULES AND REGULATIONS
+        </button>
+        <div class="modal fade" id="staticBackdrop3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">RULES AND REGULATIONS</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p>
+                    • After registering in the Placement Department, the student has to attend the
+                    Company placement that includes complete recruitment process
+                </p>
+                   
+                <p>
+                   • The company policies have to be strictly followed.
+                </p>   
+                   
+                <p>
+                   • The Placement Department has the right to change policies based on company
+                    request or external environmental changes
+                </p>   
+                    
+                <p>
+                  • Dress code has to be followed strictly
+                </p>
+                
+                <p>
+                  • If a student does not attend the recruitment conducted by three companies
+                    consecutively without permission, he/she will be removed from eligibility list
+                    maintained in the  Training and Placement Department.
+                </p>    
+                    
+                <p>
+                  • It is mandatory to attend pre-placement talk.
+                </p>    
+                    
+                <p>
+                  • Students should report 15 minutes before the reporting time
+                </p>    
+                
+                <p>
+                  • Candidates must be in formal dress-code and presentable.
+                </p>    
+                
+                <p>
+                  • During Placement process, if any candidate is found not eligible as per
+                    specified criteria, then he or she will not be entertained for further process.
+                </p>    
+                
+                <p>
+                  • All the eligible students should visit the website of the visiting company.
+                </p>    
+                
+                <p>
+                  • The students should bring HB pencils – 2 nos., eraser, ID card, passport size
+                    photographs & hard & soft copy of updated resume.
+                </p>    
+                    • Students have to come in time and will not be allowed after the
+                    commencement of the recruitment activity
+
+                
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        </div>
+
+        <!-- <div class="row">
+           <div style="justify-content: right;" class="col">
+           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
+          CATEGORY REGULATIONS
+        </button>
+
+    
+        <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">CATEGORY REGULATIONS</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p>
+                    Mass: Companies that recruit students with generic skill sets with a generic hiring process. Core: Companies that recruit for branch and skill-specific recruitments Dream: Product-based companies or which come under top 500 Fortune Companies or companies which offer salaries more than 8 LPA. Open Dream: more than 12 lpa Ladder Policy: Student placed in mass is eligible for Core, Dream and Open Dream. Student placed in core is eligible for Dream and open dream. Student placed in dream is eligible for open dream
+                </p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>    
+           </div>
+
+           <div class="col">
+           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+          DISCIPLINARY POLICY                
+        </button>
+
+        
+        <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">DISCIPLINARY POLICY </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p>
+                   <p>
+                        ●    Dress Code: Student who has not followed the dress code will be suspended for
+                    two days from the placement activity.
+                   </p>
+                    ●   Data Manipulation: A student found providing wrong/ manipulating the data
+                    will be suspended for sixty days from placement activity.
+                    ●   Misbehaviour: Students found misbehaving with the company recruitment team or
+                    faculty of training and placement department will be suspended for thirty days
+                    from placement activity.
+                    ●   Malpractice/Copying: Students found copying by any means will be
+                    suspended from the placement activity for sixty days
+
+                </p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+           </div>
+
+           <div class="col">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
+          RULES AND REGULATIONS
+        </button>
+
+      
+        <div class="modal fade" id="staticBackdrop3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">RULES AND REGULATIONS</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p>
+                    • After registering in the Placement Department, the student has to attend the
+                    Company placement that includes complete recruitment process
+                    • The company policies have to be strictly followed.
+                    • The Placement Department has the right to change policies based on company
+                    request or external environmental changes
+                    • Dress code has to be followed strictly
+                    • If a student does not attend the recruitment conducted by three companies
+                    consecutively without permission, he/she will be removed from eligibility list
+                    maintained in the  Training and Placement Department.
+                    • It is mandatory to attend pre-placement talk.
+                    • Students should report 15 minutes before the reporting time
+                    • Candidates must be in formal dress-code and presentable.
+                    • During Placement process, if any candidate is found not eligible as per
+                    specified criteria, then he or she will not be entertained for further process.
+                    • All the eligible students should visit the website of the visiting company.
+                    • The students should bring HB pencils – 2 nos., eraser, ID card, passport size
+                    photographs & hard & soft copy of updated resume.
+                    • Students have to come in time and will not be allowed after the
+                    commencement of the recruitment activity
+
+                </p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+           </div>
+        </div> -->
+        <!-- Button trigger modal -->
+        
+    </div>
+  </div>
+    {% endblock %}

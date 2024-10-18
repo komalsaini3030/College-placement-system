@@ -1,0 +1,62 @@
+{% extends 'base.html'%}
+    {% block content%}
+    {% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+<div style="background: url('/media/bg5.png'); background-repeat:no-repeat;background-size:cover;  height:850px; width: 100%;"><br>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <!-- <div class="container">
+        <div class="row">
+            <form class="example" action="/OffCampus_User/" method="POST">
+                {% csrf_token %}
+                <input type="text" placeholder="Search.." name="searched">
+                <button type="submit"><i class="fa fa-search"></i></button> &nbsp;&nbsp;<span class="badge bg-secondary"><h7>Enter valid USN [ pattern - 4NI18IS021 ]</h7></span>
+            </form>
+        </div>-->
+        <br>
+        
+        <br>
+        <br>
+        <br>
+        <br>
+         <br>
+        <br>
+        <div class="row">
+            <div class="col-md-8" style="padding-right:100px;">
+                <form action="/view/">
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr style="text-align:center;">
+                                <th>Company Name</th>
+                                <th>Package</th>
+                                <th>Proof</th>
+                                {% if not details %}
+                                <th><a class="btn btn-success" href="/User_AddOffCampus/">Add Off-Campus Details</a></th>
+                                {% endif %}
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            {%for i in details%}
+                            <tr style="text-align:center;">
+                                <td>{{i.CompanyName}}</td>
+                                <td>{{i.package}}</td>
+                                <td><a href="{{i.proof.url}}" value = "{{i.proof.url}}">{{i.proof}}</td>
+                                <td><a href="/OffCampus_edit/{{i.id}}" class="btn btn-warning">Edit</td>
+
+
+
+                            </tr>
+                            {%endfor%}
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    {% endblock %}

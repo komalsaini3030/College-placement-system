@@ -1,0 +1,525 @@
+ {% extends 'base.html'%}
+    {% block content%}
+    {% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+    <!-- Modal -->
+<div class="modal fade" id="myModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+       
+        <h4 class="modal-title text-center" style="color:black;">Company Details</h4>
+      </div>
+      <div class="modal-body"> 
+    <br>
+    <h3 style="text-align:center;color:black;">Add Company Details</h3>
+    <br>
+    <form action="/AddCompany/" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-4 row">
+            <label for="staticEmail" class="col-sm-5 col-form-label">COMPANY ID:</label>
+            <div class="col-sm-12">
+                <input type="text" class="form-control" id="updateid" name="updateid" readonly>
+            </div>
+        </div>
+        <div class="mb-4 row">
+            <label for="staticEmail" class="col-sm-5 col-form-label">COMPANY Name:</label>
+            <div class="col-sm-12">
+                <input type="text" class="form-control" id="updateCompanyname" name="updateCompanyname" required>
+            </div>
+        </div>
+        <div class="mb-5 row">
+            <label for="inputPassword" class="col-sm-5 col-form-label">PACKAGE/CTC:</label>
+            <div class="col-sm-12">
+                <input type="text" class="form-control" id="updatepackage" name="updatepackage">
+            </div>
+        </div>
+        <!--<div class="mb-5 row">
+            <label for="staticEmail" class="col-sm-5 col-form-label">FILE ATTACHMENTS:</label>
+            <div class="col-sm-12">
+                <iframe src=""></iframe> src="" id = "updatefile"  width="100%" height="500px" />-->
+
+                <!--input type="text" class="form-control" id="updatefile" name="updatefile" required 
+            </div>
+        </div>-->
+        <div class="mb-5 row">
+            <label for="inputPassword" class="col-md-5 col-form-label">ACTIVITY DATES:</label>
+            <div class="col-sm-12"> 
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-6">
+                                <label>PRE PLACEMENT TALK DATE</label>
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="form-control" id="updatepre" name="updatepre">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-6">
+                                <label>TEST DATE &nbsp;</label>
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="form-control" id="updatetest" name="updatetest">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-6">
+                                <label>INTERVIEW DATES</label>
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="form-control" id="updateinter" name="updateinter">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-5 row">
+            <label for="inputPassword" class="col-sm-5 col-form-label">ADDITIONAL  INFORMATION:</label>
+            <div class="col-sm-12">
+                <input type="text" class="form-control" id="updateadd" name="updateadd">
+            </div>
+        </div>
+        <div class="mb-5 row">
+            <label for="inputPassword" class="col-md-5 col-form-label">ELIGIBILITY CRITERIA: :</label>
+            <div class="col-sm-12"> 
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-2">
+                                <label>CGPA:</label>
+                            </div>
+                            <div class="col-10">
+                                <input type="number" class="form-control" id="updatecgpa" name="updatecgpa" pattern=""  step="0.01">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2">
+                                <label>STREAM :</label>
+                            </div>
+                            <div class="col-10">
+
+                                {%if i.CSl == "CSl" %}
+                                <input type="checkbox" id="updatecs" name="updatecs"  checked>
+                                <label for="CSl"> CSl</label><br>
+                                {% else %}
+                                <input type="checkbox" id="updatecs" name="updatecs" >
+                                <label for="CSl"> CSl</label><br>
+                                {%endif%}
+
+                                
+                                <input type="checkbox" id="updateis" name="updateis" value="IS">
+                                <label for="IS"> IS</label><br>
+
+                                
+                                <input type="checkbox" id="updateece" name="updateece" value="ECE">
+                                <label for="ECE">ECE</label><br>
+                                <input type="checkbox" id="updateeee" name="updateeee" value="EEE">
+                                <label for="EEE">EEE</label><br>
+                                <input type="checkbox" id="updatemech" name="updatemech" value="MECH">
+                                <label for="MECH">MECH</label><br>
+                                <input type="checkbox" id="updateip" name="updateip" value="IP">
+                                <label for="IP"> IP</label><br>
+                                <input type="checkbox" id="updatecivil" name="updatecivil" value="CIVIL">
+                                <label for="CIVIL"> CIVIL</label><br>
+                                <input type="checkbox" id="updateall" name="updateall" value="ALL_BRANCHES">
+                                <label for="ALL_BRANCHES"> ALL BRANCHES</label><br>
+                                <label for="Others">Others</label>
+                                <input type="text" id="updateother" name="updateother">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-5 row">
+            <label for="inputPassword" class="col-md-5 col-form-label">CATEGORIES:</label>
+            <div class="col-sm-12"> 
+                <div class="col-sm-12">
+                    <select class="form-control" name="updatecat" id="updatecat">
+                        <option selected name="updatecat" id="updatecat"></option>
+                        <option value="MASS">MASS</option>
+                        <option value="CORE">CORE</option>
+                        <option value="DREAM">DREAM</option>
+                        <option value="OPEN DREAM">OPEN DREAM</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    
+        <!-- <div class="col-md-12">
+            <center>
+                <input type="submit" value="ADD" class="btn btn-outline-dark">
+            </center>
+        </div> -->
+        <br>
+    </div>
+</form>
+</div>
+<br>
+</div>
+
+
+</div>
+
+   <!-- Modal -->
+<div class="modal fade" id="myModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+       
+        <h4 class="modal-title text-center" style="color:black;">Company Details</h4>
+      </div>
+      <div class="modal-body"> 
+    <br>
+    <h3 style="text-align:center;color:black;">Add Company Details</h3>
+    <br>
+    <form action="/Manage_Company/" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-4 row">
+            <label for="staticEmail" class="col-sm-5 col-form-label">COMPANY ID:</label>
+            <div class="col-sm-12">
+                <input type="text" class="form-control" id="updateid1" name="updateid1" readonly>
+            </div>
+        </div>
+        <div class="mb-4 row">
+            <label for="staticEmail" class="col-sm-5 col-form-label">COMPANY Name:</label>
+            <div class="col-sm-12">
+                <input type="text" class="form-control" id="updateCompanyname1" name="updateCompanyname1" required>
+            </div>
+        </div>
+        <div class="mb-5 row">
+            <label for="inputPassword" class="col-sm-5 col-form-label">PACKAGE/CTC:</label>
+            <div class="col-sm-12">
+                <input type="text" class="form-control" id="updatepackage1" name="updatepackage1">
+            </div>
+        </div>
+        <div class="mb-5 row">
+            <label for="staticEmail" class="col-sm-5 col-form-label">FILE ATTACHMENTS:</label>
+            <div class="col-sm-12">
+                
+
+                <input type="file" class="form-control" id="updatefile" name="updatefile" required> 
+            </div>
+        </div>
+        <div class="mb-5 row">
+            <label for="inputPassword" class="col-md-5 col-form-label">ACTIVITY DATES:</label>
+            <div class="col-sm-12"> 
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-6">
+                                <label>PRE PLACEMENT TALK DATE</label>
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="form-control" id="updatepre1" name="updatepre1" readonly>
+                                
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-6">
+                                <label>TEST DATE &nbsp;</label>
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="form-control" id="updatetest1" name="updatetest1" readonly>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-6">
+                                <label>INTERVIEW DATES</label>
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="form-control" id="updateinter1" name="updateinter1" readonly>
+                                   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-5 row">
+            <label for="inputPassword" class="col-sm-5 col-form-label">ADDITIONAL  INFORMATION:</label>
+            <div class="col-sm-12">
+                <input type="text" class="form-control" id="updateadd1" name="updateadd1">
+            </div>
+        </div>
+        <div class="mb-5 row">
+            <label for="inputPassword" class="col-md-5 col-form-label">ELIGIBILITY CRITERIA: :</label>
+            <div class="col-sm-12"> 
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-2">
+                                <label>CGPA:</label>
+                            </div>
+                            <div class="col-10">
+                                <input type="text" class="form-control" id="updatecgpa1" name="updatecgpa1">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2">
+                                <label>STREAM :</label>
+                            </div>
+                            <div class="col-10">
+
+                                {%if i.CSl == "CSl" %}
+                                <input type="checkbox" id="updatecs1" name="checks[]"  checked>
+                                <label for="CSl"> CSl</label><br>
+                                {% else %}
+                                <input type="checkbox" id="updatecs1" name="checks[]" >
+                                <label for="CSl"> CSl</label><br>
+                                {%endif%}
+
+                                
+                                <input type="checkbox" id="updateis1" name="checks[]" value="IS">
+                                <label for="IS"> IS</label><br>
+
+                                
+                                <input type="checkbox" id="updateece1" name="checks[]" value="ECE">
+                                <label for="ECE">ECE</label><br>
+                                <input type="checkbox" id="updateeee1" name="checks[]" value="EEE">
+                                <label for="EEE">EEE</label><br>
+                                <input type="checkbox" id="updatemech1" name="checks[]" value="MECH">
+                                <label for="MECH">MECH</label><br>
+                                <input type="checkbox" id="updateip1" name="checks[]" value="IP">
+                                <label for="IP"> IP</label><br>
+                                <input type="checkbox" id="updatecivil1" name="checks[]" value="CIVIL">
+                                <label for="CIVIL"> CIVIL</label><br>
+                                <input type="checkbox" id="updateall1" name="checks[]" value="ALL_BRANCHES">
+                                <label for="ALL_BRANCHES1"> ALL BRANCHES</label><br>
+                                <label for="Others">Others</label>
+                                <input type="text" id="updateother1" name="updateother1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-5 row">
+            <label for="inputPassword" class="col-md-5 col-form-label">CATEGORIES:</label>
+            <div class="col-sm-12"> 
+                <div class="col-sm-12">
+                    <select class="form-control" name="updatecat1" id="updatecat1">
+                        <option selected name="updatecat1" id="updatecat1"></option>
+                        <option value="MASS">MASS</option>
+                        <option value="CORE">CORE</option>
+                        <option value="DREAM">DREAM</option>
+                        <option value="OPEN DREAM">OPEN DREAM</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    
+        <<div class="col-md-12">
+            <center>
+                <input type="submit" value="Update" class="btn btn-outline-dark">
+            </center>
+        </div>
+        <br>
+    </div>
+</form>
+</div>
+<br>
+</div>
+
+
+</div>
+
+  
+
+
+     <!--  </div>
+      <div class="modal-footer">
+        <button type="submit"  class="btn btn-success" > Submit</button>
+             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+  </form>
+    </div>
+
+  </div>
+</div> -->
+    <div class="container">
+        <h2 style="text-align:center;padding-right:450px;">Manage Comapany</h2>
+
+
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row justify-content-end">
+                    <div style="padding-left: 200px;" class="col-4">
+                        <a class="btn btn-primary" href="/AddCompany/">Add company</a>
+                    </div>
+                </div>
+                <br>
+                <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <th>Company Id</th>
+                            <th>Company Name</th>
+                            <th>Package</th>
+                            <th>Files</th>
+                            <th style="text-align:center" colspan="3">Actions</th>
+                        </tr>
+                    </tbody>
+
+                    <tbody>
+                        {%for i in details%}
+                        <tr>
+                            <td>{{i.id}}</td>
+                            <td>{{i.CompanyName}}</td>
+                            <td>{{i.Package}}</td>
+                            <td><a href="{{i.File.url}}" value = "{{i.File.url}}">{{i.File}}</td>
+
+                            <td><input type="button" class="btn btn-info" id="{{i.id}}
+                                ${{i.CompanyName}}
+                                ${{i.Package}}
+                                ${{i.File}}
+                                ${{i.Pre_Placement}}
+                                ${{i.Test_Date}}
+                                ${{i.Interview_Date}}
+                                ${{i.Additional_Information}}
+                                ${{i.CGPA}}
+                                ${{i.Stream}}
+                                ${{i.OTHERS}}
+                                ${{i.CATEGORY}}"
+                                value="View" onclick="update(this)">
+                            </td>
+                            <td><input type="button" class="btn btn-warning" id="{{i.id}}
+                                ${{i.CompanyName}}
+                                ${{i.Package}}
+                                ${{i.File}}
+                                ${{i.Pre_Placement}}
+                                ${{i.Test_Date}}
+                                ${{i.Interview_Date}}
+                                ${{i.Additional_Information}}
+                                ${{i.CGPA}}
+                                ${{i.Stream}}
+                                ${{i.OTHERS}}
+                                ${{i.CATEGORY}}"
+                                value="Edit" onclick="update1(this)">
+                            </td>
+                            <td><a class="btn btn-outline-danger" href="/DeleteComp/{{i.id}}">Delete</a></td>
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+  
+
+function update(me){
+    var id = me.id;
+    var str = id.split("$");
+    var ids = str[0];
+    var CompanyName= str[1];
+    var Package=str[2];
+    var File=str[3];
+    var Pre_Placement=str[4];
+    var Test_Date=str[5];
+    var Interview_Date=str[6];
+    var Additional_Information=str[7];
+    var CGPA=str[8];
+    var arr=str[9];
+    var OTHERS=str[10];
+    var CATEGORY=str[11];
+    var array = arr.split(",");
+    array.map(function(num){
+    $('input:checkbox[value="' + num + '"]').attr('checked', true);
+    })
+
+
+
+    document.getElementById("updateid").value = ids;
+    document.getElementById("updateCompanyname").value=CompanyName;
+    document.getElementById("updatepackage").value=Package;
+    //document.getElementById("updatefile").src=File;
+    document.getElementById("updatepre").value=Pre_Placement;
+    document.getElementById("updatetest").value=Test_Date;
+    document.getElementById("updateinter").value=Interview_Date;
+    document.getElementById("updateadd").value=Additional_Information;
+    document.getElementById("updatecgpa").value=CGPA;
+    /*document.getElementById("updatecs").value=CSl;
+    document.getElementById("updateis").value=IS;
+    document.getElementById("updateece").value=ECE;
+    document.getElementById("updateeee").value=EEE;
+    document.getElementById("updatemech").value=MECH;
+    document.getElementById("updateip").value=IP;
+    document.getElementById("updatecivil").value=CIVIL;
+    document.getElementById("updateall").value=ALL_BRANCHES;*/
+    document.getElementById("updateother").value=OTHERS;
+    document.getElementById("updatecat").value=CATEGORY;
+
+     $('#myModal1').modal('show');
+
+}
+function update1(me){
+    var id = me.id;
+    var str = id.split("$");
+    var ids1 = str[0];
+    var CompanyName1= str[1];
+    var Package1=str[2];
+    var File1=str[3];
+    var Pre_Placement1=str[4];
+    var Test_Date1=str[5];
+    var Interview_Date1=str[6];
+    var Additional_Information1=str[7];
+    var CGPA1=str[8];
+    var arr1=str[9];
+    var OTHERS1=str[10];
+    var CATEGORY1=str[11];
+    var array = arr1.split(",");
+    array.map(function(num){
+    $('input:checkbox[value="' + num + '"]').attr('checked', true);
+    })
+
+
+
+    document.getElementById("updateid1").value = ids1;
+    document.getElementById("updateCompanyname1").value=CompanyName1;
+    document.getElementById("updatepackage1").value=Package1;
+    //document.getElementById("updatefile").src=File;
+    document.getElementById("updatepre1").value=Pre_Placement1;
+    document.getElementById("updatetest1").value=Test_Date1;
+    document.getElementById("updateinter1").value=Interview_Date1;
+    document.getElementById("updateadd1").value=Additional_Information1;
+    document.getElementById("updatecgpa1").value=CGPA1;
+    /*document.getElementById("updatecs").value=CSl;
+    document.getElementById("updateis").value=IS;
+    document.getElementById("updateece").value=ECE;
+    document.getElementById("updateeee").value=EEE;
+    document.getElementById("updatemech").value=MECH;
+    document.getElementById("updateip").value=IP;
+    document.getElementById("updatecivil").value=CIVIL;
+    document.getElementById("updateall").value=ALL_BRANCHES;*/
+    document.getElementById("updateother1").value=OTHERS1;
+    document.getElementById("updatecat1").value=CATEGORY1;
+
+     $('#myModal2').modal('show');
+
+}
+</script>
+
+
+
+    {% endblock %}

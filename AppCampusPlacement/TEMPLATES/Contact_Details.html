@@ -1,0 +1,170 @@
+{% extends 'base.html'%}
+    {% block content%}
+    {% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+    <div style=" background-repeat:no-repeat;background-size:cover;background-color:rosybrown;  height:900px; width: 100%;">
+    <h3>Page 04 of 04</h3>
+
+    <div class="container row" style="padding-right:350px; padding-left:350px;">
+        <form>
+            <div class="container">
+                <div class="row">
+                    <h3>Contact details</h3>
+                    <hr>
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    contact number *
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="NUMBER" class="form-control" id="formGroupExampleInput" name="contact_number"  min="1">
+                                </div>
+                            </div>
+                       </div>
+                </div>
+                <br>
+
+                <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    LANDLINE NUMBER *
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="NUMBER" class="form-control" id="formGroupExampleInput" name="landline_number"  min="1">
+                                </div>
+                            </div>
+                       </div>
+                </div>
+                <br>
+
+                <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    PARENTS CONTACT NUMBER (DO NOT ADD 0 / +1) ONLY 10 DIGITS 
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="NUMBER" class="form-control" id="formGroupExampleInput" name="parent_number"  min="1">
+                                </div>
+                            </div>
+                       </div>
+                </div>
+                <br>
+
+                 <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                   Alternate contact number *
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="text" class="form-control" id="formGroupExampleInput" name="alt_number"  min="1" pattern="[1-9]{1}[0-9]{9}" >
+                                </div>
+                            </div>
+                       </div>
+                </div>
+                <br>
+
+                <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                   EMAIL ID - gmail *
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="EMAIL" class="form-control" id="formGroupExampleInput" name="email" >
+                                </div>
+                            </div>
+                       </div>
+                </div>
+                <br>
+
+                 <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                   College mail-id
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="EMAIL" class="form-control" id="formGroupExampleInput" name="clg_id" >
+                                </div>
+                            </div>
+                       </div>
+                </div>
+                <br>
+
+                <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                   CURRENT ADDRESS *
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="text" class="form-control" id="formGroupExampleInput" name="current_add" >
+                                </div>
+                            </div>
+                       </div>
+                </div>
+                <br>
+
+                <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                  PERMANENT ADDRESS (HOME) *
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="text" class="form-control" id="formGroupExampleInput" name="permanent_add" >
+                                </div>
+                            </div>
+                       </div>
+                </div>
+                <br>
+                <div class="row">
+                     <div class="btn-group" role="group" aria-label="Basic example">
+                         <a href="/Previous_Details/" class="btn btn-primary">Previous</a>
+                         <button class="btn btn-primary" type="submit">Submit</button>
+                     </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    
+
+    
+    </div>
+{% endblock %}
+<div class="btn-group" role="group" aria-label="Basic example">
+        <a href="/Previous_Details/" class="btn btn-primary">Previous</a>
+    </div>

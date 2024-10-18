@@ -1,0 +1,73 @@
+{% extends 'base.html'%}
+    {% block content%}
+    {% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+
+<div style="background: url('/media/bg5.jpg'); background-repeat:no-repeat;background-size:cover;  height:2000px; width: 100%;">
+    <br>
+    <h2 style="text-align:center;">Applied Jobs</h2>
+ <div class="row">
+             
+                       <table class="table table-striped">
+                        <tbody>
+                            <tr>
+                                <th>Company Name</th>
+                                <th>Pre-Placement Date</th>
+                                <th>Test Date</th>
+                                <th>Interview Date</th>
+                                <th>Other Info</th>
+                                
+                                
+                                <th>Category</th>
+                                
+                                <th>CGPA</th>
+                                <th>Selection Status</th>
+
+
+
+
+                                
+                            </tr>
+                        </tbody>
+
+                        <tbody>
+                            {%for i in results%}
+                            <tr>
+                                <td>{{i.1}}</td>
+                                <td>{{i.4}}</td>
+                                <td>{{i.5}}</td>
+                                <td>{{i.6}}</td>
+                                <td>{{i.7}}</td>
+                                <td>{{i.11}}</td>
+                                <td>{{i.8}}</td>
+                                <td>{{i.18}}</td>
+                               
+                               
+                                
+
+
+                                
+                                
+                                
+                                
+                            </tr>
+                            
+                            {% endfor%}
+                        </tbody>
+                    </table> 
+                </div>
+            </div>
+        </div>
+
+</div>
+
+
+{% endblock %}
+
+
+

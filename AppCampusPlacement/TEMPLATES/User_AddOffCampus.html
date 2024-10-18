@@ -1,0 +1,95 @@
+{% extends 'base.html'%}
+    {% block content%}
+    {% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+<div style="background: url('/media/bg5.jpg'); background-repeat:no-repeat;background-size:cover;  height:1450px; width: 100%;">
+    <div class="container" style="padding:100px;">
+        <h3><u>ADD OFF-CAMPUS  PLACED  STUDENTS  DETAILS</u> </h3>
+        <br>
+        <form method="POST" action="/User_AddOffCampus/" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-2">
+                    <label class="form-check-label " for="name">
+                        USN* 
+                    </label>
+                </div>
+                {% for i in data %}
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="col-md-4">
+                        <input type="text" name="usn" class="form-control" id="name" maxlength="10" value="{{i.USN}}" readonly>
+                </div>
+                <div class="col-md-4">
+                        <h5><span class="badge bg-secondary">[ pattern - 4NI18IS021 ]</span></h5>
+                </div>
+            </div>
+            {% endfor %}
+            <br>
+
+            <div class="row">
+                <div class="col-md-2">
+                    <label class="form-check-label " for="name">
+                        Company Name* 
+                    </label>
+                </div>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="col-md-4">
+                        <input type="text" name="c_name" class="form-control" id="name" >
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-md-2">
+                    <label class="form-check-label " for="name">
+                        PACKAGE/CTC* 
+                    </label>
+                </div>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="col-md-4">
+                        <input type="text" name="package" class="form-control" id="name" required>
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-md-2">
+                    <label class="form-check-label " for="name">
+                        PROOF OF JOINING *:
+                (ONLY PDF FILES CAN BE ATTACHED)
+ 
+                    </label>
+                </div>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="col-md-4">
+                         <input type="file" class="btn btn-warning" id="proof" name="proof" 
+                           accept="p.df" required style="width: 100%;">
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-md-2">
+                    <label class="form-check-label " for="name" hidden>
+ 
+                    </label>
+                </div>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="col-md-4" style="text-align:right">
+                         <input type="submit" class="btn btn-primary" name="Submit">
+                </div>
+            </div>
+            <br>
+
+
+           
+
+        </form>
+    </div>
+</div>
+    {% endblock %}

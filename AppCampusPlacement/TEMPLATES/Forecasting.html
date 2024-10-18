@@ -1,0 +1,31 @@
+{% extends 'base.html'%}
+    {% block content%}
+    {% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+<div style="background: url('/media/bg5.jpg'); background-repeat:no-repeat;background-size:cover;  height:1450px; width: 100%;">
+ <div class="container" style="width:50%;background-color:transparent;"> 
+    <br>   
+<h2>CLICK ON LINKS TO VIEW THE FORECAST</h2>
+
+<ol>
+  <li><a href="{% url 'Placed'%}">PLACED VS NOT PLACED</a></li>
+  <li>PLACED VS NOT PLACED(Branchwise)</li>
+  <ul>
+  <li><a href="{% url 'CSI_Display'%}">CSE</a></li>
+  <li><a href="{% url 'CIVIL_Display'%}">CIVIL</a></li>
+  <li><a href="{% url 'ECE_Display'%}">ECE</a></li>
+  <li><a href="{% url 'EEE_Display'%}">EEE</a></li>
+  <li><a href="{% url 'IS_Display'%}">IS</a></li>
+  <li><a href="{% url 'IP_Display'%}">IP</a></li>
+</ul>
+  <li><a href="{% url 'Display_Placed'%}">Offers</a></li>
+  <li><a href="{% url 'Companies'%}">Categories</a></li>
+</ol>  
+</div>
+</div>
+{% endblock %}

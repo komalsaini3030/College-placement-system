@@ -1,0 +1,207 @@
+{% extends 'base.html'%}
+    {% block content%}
+    {% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+    <div style="background: url('/media/.jpg'); background-repeat:no-repeat;background-size:cover;  height:900px; width: 100%;">
+        
+            <h3>Display Student Detail Page</h3>
+            <div class="col-md-12">
+               <table border="5px solid #000;" class="table table-success table-striped">
+                <tbody>
+                    <tr>
+                        <th>Student ID</th>
+                        <th>Student Name</th>
+                        <th>USN</th>
+                        <th>Date_of_Birth</th>
+                        <th>Gender</th>
+                        <th>Category</th>
+                        <th>Mode_of_admission</th>
+                        <th>Engineering_branch</th>
+                        <th>Section</th>
+                        <th>Year_of_joining</th>
+                        <th>Year_of_passing</th>
+                        <th>first_sem_SGPA</th>
+                        <th>first_sem_percentage</th>
+                        <th>second_sem_SGPA</th>
+                        <th>second_sem_percentage</th>
+                        <th>Mode_of_admission</th>
+                        <th>Engineering_branch</th>
+                        <th>Section</th>
+                        <th>Year_of_joining</th>
+                        <th>Year_of_passing</th>
+                        <th>first_sem_SGPA</th>
+                        <th>second_sem_SGPA</th>
+                        <th>Year_of_joining</th>
+                        <th>first_sem_SGPA</th>
+                        <th>second_sem_percentage</th>
+                        <th>first_sem_percentage</th>
+                        <th>second_sem_SGPA</th>
+                        <th>second_sem_percentage</th>
+                        <th>third_sem_SGPA</th>
+                        <th>third_sem_percentage</th>
+                        <th>fourth_sem_SGPA</th>
+                        <th>fourth_sem_percentage</th>
+                        <th>fifth_sem_SGPA</th>
+                        <th>fifth_sem_percentage</th>
+                        <th>Total_CGPA</th>
+                        <th>Total_CGPA</th>
+                        <th>TOTAL_CREDITS_EARNED_UPTO_5TH_SEMESTER</th>
+                        <th>NUMBER_OF_SUBJECTS_CLEARED_IN_MUTE</th>
+                        <th>CURRENT_ARREARS</th>
+                        <th>NUMBER_OF_SUBJECTS_CLEARED_IN_MUTE</th>
+                        <th>CURRENT_ARREARS</th>
+                        <th>tenth_SSLC_percentage</th>
+                        <th>tenth_sslc_board</th>
+                        <th>twelveth_PUC_percentage</th>
+                        <th>Name_of_institution_studied_in_10th_sslc</th>
+                        <th>Name_of_the_institution_studied_12th_Puc</th>
+                        <th>twelveth_PUC_qualified_year</th>
+                        <th>Diploma_percentage</th>
+                        <th>Diploma_CET_percentage</th>
+                        <th>Diploma_qualified_year</th>
+                        <th>contact_number</th>
+                        <th>LANDLINE_NUMBER</th>
+                        <th>Alternate_contact_number</th>
+                        <th>EMAIL_ID</th>
+                        <th>College_mail</th>
+                        <th>CURRENT_ADDRESS</th>
+                        <th>PERMANENT_ADDRESS</th>
+                        <th>Company_id</th>
+                        <th>Company_name</th>
+                        <th>Status</th>
+                    </tr>
+                </tbody>
+                <tbody>
+                    {%for i in results%}
+                    <tr>
+                        <td>{{i.0}}</td>
+                        <td>{{i.1}}</td>
+                        <td>{{i.2}}</td>
+                        <td>{{i.3}}</td>
+                        <td>{{i.4}}</td>
+                        <td>{{i.5}}</td>
+                        <td>{{i.6}}</td>
+                        <td>{{i.7}}</td>
+                        <td>{{i.8}}</td>
+                        <td>{{i.9}}</td>
+                        <td>{{i.10}}</td>
+                        <td>{{i.11}}</td>
+                        <td>{{i.12}}</td>
+                        <td>{{i.13}}</td>
+                        <td>{{i.14}}</td>
+                        <td>{{i.15}}</td>
+                        <td>{{i.16}}</td>
+                        <td>{{i.17}}</td>
+                        <td>{{i.18}}</td>
+                        <td>{{i.19}}</td>
+                        <td>{{i.20}}</td>
+                        <td>{{i.21}}</td>
+                        <td>{{i.22}}</td>
+                        <td>{{i.23}}</td>
+                        <td>{{i.24}}</td>
+                        <td>{{i.25}}</td>
+                        <td>{{i.26}}</td>
+                        <td>{{i.27}}</td>
+                        <td>{{i.28}}</td>
+                        <td>{{i.29}}</td>
+                        <td>{{i.30}}</td>
+                        <td>{{i.31}}</td>
+                        <td>{{i.32}}</td>
+                        <td>{{i.33}}</td>
+                        <td>{{i.34}}</td>
+                        <td>{{i.35}}</td>
+                        <td>{{i.36}}</td>
+                        <td>{{i.37}}</td>
+                        <td>{{i.38}}</td>
+                        <td>{{i.39}}</td>
+                        <td>{{i.40}}</td>
+                        <td>{{i.41}}</td>
+                        <td>{{i.42}}</td>
+                        <td>{{i.43}}</td>
+                        <td>{{i.44}}</td>
+                        <td>{{i.45}}</td>
+                        <td>{{i.46}}</td>
+                        <td>{{i.47}}</td>
+                        <td>{{i.48}}</td>
+                        <td>{{i.49}}</td>
+                        <td>{{i.50}}</td>
+                        <td>{{i.51}}</td>
+                        <td>{{i.52}}</td>
+                        <td>{{i.53}}</td>
+                        <td>{{i.54}}</td>
+                        <td>{{i.55}}</td>
+                        <td>{{i.56}}</td>
+                        <td>{{i.57}}</td>
+                        <td>{{i.58}}</td>
+                        <td>{{i.59}}</td>
+                        
+
+                        
+                        
+
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table> 
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+     = models.CharField(max_length=100,default=None,null=True)
+     = models.CharField(max_length=100,default=None,null=True)
+    Engineering_branch = models.CharField(max_length=100,default=None,null=True)
+     = models.CharField(max_length=100,default=None,null=True)
+     = models.CharField(max_length=100,default=None,null=True)
+     = models.CharField(max_length=100,default=None,null=True)
+     = models.CharField(max_length=100,default=None,null=True)
+     = models.CharField(max_length=100,default=None,null=True)
+     = models.CharField(max_length=100,default=None,null=True)
+     = models.CharField(max_length=100,default=None,null=True)
+     = models.CharField(max_length=100,default=None,null=True)
+     = models.CharField(max_length=100,default=None,null=True)
+      = models.CharField(max_length=100,default=None,null=True)
+     = models.CharField(max_length=100,default=None,null=True)
+     = models.CharField(max_length=100,default=None,null=True)
+     = models.CharField(max_length=100,default=None,null=True)
+     = models.CharField(max_length=100,default=None,null=True)
+     = models.CharField(max_length=100,default=None,null=True)
+     = models.CharField(max_length=100,default=None,null=True)
+     = models.CharField(max_length=100,default=None,null=True)
+     = models.CharField(max_length=100,default=None,null=True)
+     = models.CharField(max_length=100,default=None,null=True)
+     = models.CharField(max_length=100,default=None,null=True)
+     = models.CharField(max_length=100,default=None,null=True)
+     = models.CharField(max_length=100,default=None,null=True)
+     = models.CharField(max_length=100,default=None,null=True)
+     = models.CharField(max_length=100,default=None,null=True)
+      = models.CharField(max_length=100,default=None,null=True)
+      = models.CharField(max_length=100,default=None,null=True)
+      = models.CharField(max_length=100,default=None,null=True)
+      = models.CharField(max_length=100,default=None,null=True)
+     = models.CharField(max_length=100,default=None,null=True) 
+     = models.CharField(max_length=100,default=None,null=True)
+     = models.CharField(max_length=100,default=None,null=True)
+            = models.CharField(max_length=100,default=None,null=True)
+     = models.CharField(max_length=100,default=None,null=True)
+     = models.CharField(max_length=100,default=None,null=True)
+     = models.CharField(max_length=100,default=None,null=True)
+            = models.CharField(max_length=100,default=None,null=True)
+     = models.CharField(max_length=100,default=None,null=True)
+      = models.CharField(max_length=100,default=None,null=True)
+      = models.CharField(max_length=100,default=None,null=True)
+             = models.CharField(max_length=100,default=None,null=True)
+     = models.CharField(max_length=100,default=None,null=True)
+      = models.CharField(max_length=100,default=None,null=True)
+      = models.CharField(max_length=100,default=None,null=True)
+      = models.CharField(max_length=100,default=None,null=True)
+      = models.CharField(max_length=100,default=None,null=True)
+      = models.CharField(max_length=100,default=None,null=True)
+     = models.CharField(max_length=100,default=None,null=True)
+      = models.CharField(max_length=100,default=None,null=True)
+      = models.CharField(max_length=100,default=None,null=True)

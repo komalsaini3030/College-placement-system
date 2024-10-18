@@ -1,0 +1,45 @@
+{% extends 'base.html'%}
+    {% block content%}
+    {% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+<div style="background: url('/media/bg5.png'); background-repeat:no-repeat;background-size:cover;  height:850px; width: 100%;"><br>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <div class="container">
+        <div class="row">
+            <form class="example" action="/User_OffCampus/" method="POST">
+                {% csrf_token %}
+                <input type="text" placeholder="Search.." name="searched">
+                <button type="submit"><i class="fa fa-search"></i></button> &nbsp;&nbsp;<span class="badge bg-secondary"><h7>Enter valid USN [ pattern - 4NI18IS021 ]</h7></span>
+            </form>
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col-md-6" style="padding-right:100px;">
+                <form action="/view/">
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr style="text-align:center;">
+                                <th>USN</th>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            {%for i in details%}
+                            <tr style="text-align:center;">
+                                <td><a class="btn btn-success" href="/view1/{{i.id}}">{{i.USN}}</a></td>
+                            </tr>
+                            {%endfor%}
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    {% endblock %}

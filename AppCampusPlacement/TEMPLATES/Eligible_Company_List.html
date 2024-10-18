@@ -1,0 +1,348 @@
+{% extends 'base.html'%}
+    {% block content%}
+    {% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+
+<div style="background: url('/media/bg.pg'); background-repeat:no-repeat;background-size:cover;  height:850px; width: 100%;">
+
+        <!-- Modal -->
+<div class="modal fade" id="myModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+       
+        <h4 class="modal-title text-center" style="color:black;">Company Details</h4>
+      </div>
+      <div class="modal-body"> 
+    <br>
+    <h3 style="text-align:center;color:black;">Company Details</h3>
+    <br>
+    <form action="/AddCompany/" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-4 row">
+            <label for="staticEmail" class="col-sm-5 col-form-label">COMPANY ID:</label>
+            <div class="col-sm-12">
+                <input type="text" class="form-control" id="updateid" name="updateid" readonly >
+            </div>
+        </div>
+        <div class="mb-4 row">
+            <label for="staticEmail" class="col-sm-5 col-form-label">COMPANY Name:</label>
+            <div class="col-sm-12">
+                <input type="text" class="form-control" id="updateCompanyname" name="updateCompanyname" required readonly>
+            </div>
+        </div>
+        <div class="mb-5 row">
+            <label for="inputPassword" class="col-sm-5 col-form-label">PACKAGE/CTC:</label>
+            <div class="col-sm-12">
+                <input type="text" class="form-control" id="updatepackage" name="updatepackage" readonly>
+            </div>
+        </div>
+        <!--<div class="mb-5 row">
+            <label for="staticEmail" class="col-sm-5 col-form-label">FILE ATTACHMENTS:</label>
+            <div class="col-sm-12">
+                <input type="file" class="form-control" id="updatefile" name="updatefile" required readonly>
+            </div>
+        </div>-->
+        <div class="mb-5 row">
+            <label for="inputPassword" class="col-md-5 col-form-label">ACTIVITY DATES:</label>
+            <div class="col-sm-12"> 
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-6">
+                                <label>PRE PLACEMENT TALK DATE</label>
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="form-control" id="updatepre" name="updatepre" readonly>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-6">
+                                <label>TEST DATE &nbsp;</label>
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="form-control" id="updatetest" name="updatetest" readonly>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-6">
+                                <label>INTERVIEW DATES</label>
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="form-control" id="updateinter" name="updateinter" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-5 row">
+            <label for="inputPassword" class="col-sm-5 col-form-label">ADDITIONAL  INFORMATION:</label>
+            <div class="col-sm-12">
+                <input type="text" class="form-control" id="updateadd" name="updateadd">
+            </div>
+        </div>
+        <div class="mb-5 row">
+            <label for="inputPassword" class="col-md-5 col-form-label">ELIGIBILITY CRITERIA: :</label>
+            <div class="col-sm-12"> 
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-2">
+                                <label>CGPA:</label>
+                            </div>
+                            <div class="col-10">
+                                <input type="text" class="form-control" id="updatecgpa" name="updatecgpa" readonly>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2">
+                                <label>STREAM :</label>
+                            </div>
+                            <div class="col-10">
+
+                                
+                                
+                                
+
+                                
+                                <input type="checkbox"  name="my_check[]" value="CSl" onclick="return false">
+                                <label for="CSl"> CSl</label><br>
+                                
+
+                                
+                                <input type="checkbox" id="updateis" name="my_check[]" value="IS" onclick="return false">
+                                <label for="IS"> IS</label><br>
+
+                                
+                                <input type="checkbox" id="updateece" name="my_check[]" value="ECE" onclick="return false">
+                                <label for="ECE">ECE</label><br>
+                                <input type="checkbox" id="updateeee" name="my_check[]"value="EEE" onclick="return false">
+                                <label for="EEE">EEE</label><br>
+                                <input type="checkbox" id="updatemech" name="my_check[]" value="MECH" onclick="return false">
+                                <label for="MECH">MECH</label><br>
+                                <input type="checkbox" id="updateip" name="my_check[]"value="IP" onclick="return false">
+                                <label for="IP"> IP</label><br>
+                                <input type="checkbox" id="updatecivil" name="my_check[]"name="updatecivil" value="CIVIL" onclick="return false">
+                                <label for="CIVIL">CIVIL</label><br>
+                                <input type="checkbox" id="updateall" name="my_check[]"value="ALL_BRANCHES" onclick="return false">
+                                <label for="ALL_BRANCHES"> ALL BRANCHES</label><br>
+                                <label for="Others">Others</label>
+                                <input type="text" id="updateother" name="updateother" onclick="return false">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-5 row">
+            <label for="inputPassword" class="col-md-5 col-form-label">CATEGORIES:</label>
+            <div class="col-sm-12"> 
+                <div class="col-sm-12">
+                    <select class="form-control" name="updatecat" id="updatecat" >
+                        <option selected name="updatecat" id="updatecat"></option>
+                        <option value="MASS">MASS</option>
+                        <option value="CORE">CORE</option>
+                        <option value="DREAM">DREAM</option>
+                        <option value="OPEN DREAM">OPEN DREAM</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    
+        <!-- <div class="col-md-12">
+            <center>
+                <input type="submit" value="ADD" class="btn btn-outline-dark">
+            </center>
+        </div> -->
+        <br>
+    </div>
+</form>
+</div>
+<br>
+</div>
+
+
+</div>
+       
+            <div class="row">
+             
+                       <table class="table table-striped">
+                        <tbody>
+                            <tr>
+                                <th>Company Name</th>
+                                <th>Package</th>
+                                <th>Files</th>
+                                <th>Pre-Placement Date</th>
+                                <th>Test Date</th>
+                                <th>Interview Date</th>
+                                <th>Additional Information</th>
+                                <th>CGPA</th>
+                                <th>Others</th>
+                                <th>Category</th>
+                                
+                                <th colspan="2" style="text-align:center;">Actions</th>
+                            </tr>
+                        </tbody>
+
+                        <tbody>
+                            {%for i in info %}
+                            <tr>
+                                <td>{{i.CompanyName}}</td>
+                                <td>{{i.Package}}</td>
+                                <td><a href="{{i.File.url}}" value = "{{i.File.url}}">{{i.File}}</a></td>
+                                <td>{{i.Pre_Placement}}</td>
+                                <td>{{i.Test_Date}}</td>
+                                <td>{{i.Interview_Date}}</td>
+                                <td>{{i.Additional_Information}}</td>
+                                <td>{{i.CGPA}}</td>
+                               
+                                <td>{{i.OTHERS}}</td>
+                                <td>{{i.CATEGORY}}</td>
+                                
+                                <td>
+                                    <input type="button" class="btn btn-info" id="{{i.id}}
+                                    ${{i.CompanyName}}
+                                    ${{i.Package}}
+                                    ${{i.File}}
+                                    ${{i.Pre_Placement}}
+                                    ${{i.Test_Date}}
+                                    ${{i.Interview_Date}}
+                                    ${{i.Additional_Information}}
+                                    ${{i.CGPA}}
+                                    ${{i.Stream}}
+                                    ${{i.OTHERS}}
+                                    ${{i.CATEGORY}}"
+                                    value="View" onclick="update(this)">
+                                </td>
+                                
+                                <td><button class = "btn btn-success" id="button1" name="button1" value="{{i.id}}" >Apply</button></td>
+                                
+                            </tr>
+                            
+                            {% endfor%}
+                        </tbody>
+                    </table> 
+                </div>
+            </div>
+        </div>
+
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+  
+
+function update(me){
+    //arr = [];
+    
+    var id = me.id;
+    var str = id.split("$");
+    var ids = str[0];
+    var CompanyName= str[1];
+    var Package=str[2];
+    var File=str[3];
+    var Pre_Placement=str[4];
+    var Test_Date=str[5];
+    var Interview_Date=str[6];
+    var Additional_Information=str[7];
+    var CGPA=str[8];
+    var arr=str[9];
+    //alert(typeof arr); 
+    var array1 = [arr];
+    //alert(typeof [arr]);
+    //alert(Stream1)
+    //const myArray = array.split(" ");
+    //alert(Array.from(myArray);
+    //alert(myArray)
+    let arr1 = [arr].slice(0);
+    //alert(typeof arr1);
+    var OTHERS=str[10];
+    var CATEGORY=str[11];
+    //var string = "0,1";
+    var array = arr.split(",");
+    //alert(array); 
+    var arrays = ['CSl','EEE']
+    //alert(typeof arrays)
+    array.map(function(num){
+    $('input:checkbox[value="' + num + '"]').attr('checked', true);
+    })
+
+    document.getElementById("updateid").value = ids;
+    document.getElementById("updateCompanyname").value=CompanyName;
+    document.getElementById("updatepackage").value=Package;
+    //document.getElementById("updatefile").src=File;
+    document.getElementById("updatepre").value=Pre_Placement;
+    document.getElementById("updatetest").value=Test_Date;
+    document.getElementById("updateinter").value=Interview_Date;
+    document.getElementById("updateadd").value=Additional_Information;
+    document.getElementById("updatecgpa").value=CGPA;
+    /*document.getElementById("updatecs").value=CSl;
+    document.getElementById("updateis").value=IS;
+    document.getElementById("updateece").value=ECE;
+    document.getElementById("updateeee").value=EEE;
+    document.getElementById("updatemech").value=MECH;
+    document.getElementById("updateip").value=IP;
+    document.getElementById("updatecivil").value=CIVIL;
+    document.getElementById("updateall").value=ALL_BRANCHES;*/
+    document.getElementById("updateother").value=OTHERS;
+    document.getElementById("updatecat").value=CATEGORY;
+
+     $('#myModal1').modal('show');
+
+}
+
+$(document).ready(function() {
+$(":button").click(function(event){
+  if($(this).prop("id") == "button1"){
+   var No1 = $(this).prop("value");
+  //alert($(this).prop("value"));
+
+   $.ajax({
+        type: "POST",
+        url: '{% url 'ApplyJob' %}',
+        data: 
+        {   
+            
+            'C_id': No1,
+            'csrfmiddlewaretoken': '{{ csrf_token }}',
+        },
+        //dataType: 'json',
+        success: function (data)
+        {
+            var reply = data["respond"];
+            if (reply == "placed"){
+                alert('You have already been placed in 2 companies.')
+
+                
+            }
+            else if (reply == "Category")
+            {
+                alert('You have already been placed in higher companies.')
+            }
+            else if (reply == "exists")
+            {
+                alert('You have already been applied for this job.')
+            }
+            else{
+                alert('Successfully Applied')
+            }
+        }
+})
+}
+});
+});
+</script>
+</div>
+</div>
+
+    {% endblock %}

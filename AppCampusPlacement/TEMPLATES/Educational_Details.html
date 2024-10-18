@@ -1,0 +1,374 @@
+{% extends 'base.html'%}
+    {% block content%}
+    {% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+<div style=" background-repeat:no-repeat;background-size:cover;background-color:rosybrown;  height:1500px; width: 100%;">
+    <div>
+    <h3>Student Registration
+        Page 02 of 04 </h3>
+    </div>
+
+    <div class="container row" style="padding-right:350px; padding-left:350px;">
+        <form>
+                <div class="container">
+                <div class="row">
+                        <h3>Educational Details</h3>
+                        <hr>
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                Mode of admission *
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                                <select name="admission" class="form-select">
+                                    <option selected>Select</option>
+                                    <option value="comed k">comed k</option>
+                                    <option value="CET">CET</option>
+                                    <option value="Management">Management</option>
+                                </select>
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+
+
+                 <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                Engineering branch * 
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                                <select name="admission" class="form-select">
+                                    <option selected>Select</option>
+                                    <option value="CSE">CSE</option>
+                                    <option value="ISE">ISE</option>
+                                    <option value="ME">ME</option>
+                                    <option value="IPE">IPE</option>
+                                    <option value="CE">CE</option>
+                                    <option value="EEE">EEE</option>
+                                    <option value="ECE">ECE</option>
+                                </select>
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br>   
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                Section *
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                                <select name="admission" class="form-select">
+                                    <option selected>Select</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                </select>
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+
+                   <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                Year of joining*::
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input style="caret-color:red;" type="NUMBER" class="form-control" id="formGroupExampleInput" name="name" required pattern="[A-Z0-9]{}" min="1">
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+                   <div class="row">
+                       
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                Year of passing*:
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input style="caret-color:red;" type="NUMBER" class="form-control" id="formGroupExampleInput" name="name" required pattern="[A-Z0-9]{}" min="1">
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+                   <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                1st sem SGPA*::
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input style="caret-color:red;" type="NUMBER" class="form-control" id="formGroupExampleInput" name="name" required pattern="[A-Z0-9]{}" min="1">
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+                   <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                1st sem percentage*(SGPA-0.75*10):
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input style="caret-color:red;" type="NUMBER" class="form-control" id="formGroupExampleInput" name="name" required pattern="[A-Z0-9]{}" min="1">
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+                   <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                2nd sem SGPA*:
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input style="caret-color:red;" type="NUMBER" class="form-control" id="formGroupExampleInput" name="name" required pattern="[A-Z0-9]{}" min="1">
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+                   <div class="row">
+                       
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                2nd sem percentage* 
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input style="caret-color:red;" type="NUMBER" class="form-control" id="formGroupExampleInput" name="name" required pattern="[A-Z0-9]{}" min="1">
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+                   <div class="row">
+                      
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                3rd sem SGPA*:
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input style="caret-color:red;" type="NUMBER" class="form-control" id="formGroupExampleInput" name="name" required pattern="[A-Z0-9]{}" min="1">
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+                   <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                3rd sem percentage*:
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input style="caret-color:red;" type="NUMBER" class="form-control" id="formGroupExampleInput" name="name" required pattern="[A-Z0-9]{}" min="1">
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+                   <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                4th sem SGPA*:                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input style="caret-color:red;" type="NUMBER" class="form-control" id="formGroupExampleInput" name="name" required pattern="[A-Z0-9]{}" min="1">
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+                   <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                4th sem percentage*:
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input style="caret-color:red;" type="NUMBER" class="form-control" id="formGroupExampleInput" name="name" required pattern="[A-Z0-9]{}" min="1">
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+                   <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                               5th sem SGPA*:
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input style="caret-color:red;" type="NUMBER" class="form-control" id="formGroupExampleInput" name="name" required pattern="[A-Z0-9]{}" min="1">
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+                   <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                5th sem percentage*:
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input style="caret-color:red;" type="NUMBER" class="form-control" id="formGroupExampleInput" name="name" required pattern="[A-Z0-9]{}" min="1">
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+                   <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                               Total CGPA*:
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input style="caret-color:red;" type="NUMBER" class="form-control" id="formGroupExampleInput" name="name" required pattern="[A-Z0-9]{}" min="1">
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+                   <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                               Total CGPA%*:
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input style="caret-color:red;" type="NUMBER" class="form-control" id="formGroupExampleInput" name="name" required pattern="[A-Z0-9]{}" min="1">
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+                   <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                TOTAL CREDITS EARNED UPTO 5TH SEMESTER *:
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input style="caret-color:red;" type="NUMBER" class="form-control" id="formGroupExampleInput" name="name" required pattern="[A-Z0-9]{}" min="1">
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+                   <div class="row">
+                       
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                NUMBER OF SUBJECTS CLEARED IN MUTE *:
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input style="caret-color:red;" type="NUMBER" class="form-control" id="formGroupExampleInput" name="name" required pattern="[A-Z0-9]{}" min="1">
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+                   <div class="row">
+                
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                               CURRENT ARREARS *:
+                            </label>
+                        </div>
+                            <div class="col-md-8">
+                            <input style="caret-color:red;" type="NUMBER" class="form-control" id="formGroupExampleInput" name="name" required pattern="[A-Z0-9]{}" min="1">
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                   <br> 
+                    <div class="row">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <a href="/User_Registeration/" class="btn btn-primary">Previous</a>
+                            <a href="/Previous_Details/" class="btn btn-primary">Next</a>
+                        </div>
+                    </div>
+                   <br>
+                   <br>
+            </div>
+        </form>
+    </div>
+</div>
+    
+    {% endblock %}
+   

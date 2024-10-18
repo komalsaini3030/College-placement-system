@@ -1,0 +1,235 @@
+{% extends 'base.html'%}
+    {% block content%}
+    {% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+    <div style=" background-repeat:no-repeat;background-size:cover;background-color:rosybrown;  height:1000px; width: 100%;">
+    <h3>Page 03 of 04</h3>
+
+    <div class="container row" style="padding-right:350px; padding-left:350px;">
+        <form>
+            <div class="row">
+                    <h3>Previous educational details</h3>
+                    <hr>
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    10th/SSLC percentage* :
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="NUMBER" class="form-control" id="formGroupExampleInput" name="ssc_percentage"  min="1">
+                                </div>
+                            </div>
+                       </div>
+            </div>
+        <br>
+
+        <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    10th/sslc board* :
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="NUMBER" class="form-control" id="formGroupExampleInput" name="ssc_board"  min="1">
+                                </div>
+                            </div>
+                       </div>
+        </div>
+        <br>
+
+         <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    Name of institution, studied for 10th/sslc*:
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="text" class="form-control" id="formGroupExampleInput" name="ssc_name"  >
+                                </div>
+                            </div>
+                       </div>
+        </div>
+        <br>
+
+        <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    10th/sslc qualified year*:
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="number" min="1900" max="2099" step="1" value="2016" class="form-control" id="formGroupExampleInput" name="ssc_year" >
+                                </div>
+                            </div>
+                       </div>
+        </div>
+        <br>
+
+        <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    12th/PUC percentage*:
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="NUMBER" class="form-control" id="formGroupExampleInput" name="hsc_percentage"  min="1">
+                                </div>
+                            </div>
+                       </div>
+        </div>
+        <br>
+
+        <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    12th/PUC board*::
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="NUMBER" class="form-control" id="formGroupExampleInput" name="hsc_board"  min="1">
+                                </div>
+                            </div>
+                       </div>
+        </div>
+        <br>
+
+         <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    Name of the institution studied 12th/Puc*:
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="NUMBER" class="form-control" id="formGroupExampleInput" name="hsc_name"  min="1">
+                                </div>
+                            </div>
+                       </div>
+        </div>
+        <br>
+
+         <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    12th/PUC qualified year*
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="NUMBER" class="form-control" id="formGroupExampleInput" name="hsc_qualifiedYear"  min="1">
+                                </div>
+                            </div>
+                       </div>
+        </div>
+        <br>
+
+        <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    Diploma percentage (if lateral entry):
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="NUMBER" class="form-control" id="formGroupExampleInput" name="diploma_percentage"  min="1">
+                                </div>
+                            </div>
+                       </div>
+        </div>
+        <br>
+
+        <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    Diploma CET percentage (if lateral entry)
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="NUMBER" class="form-control" id="formGroupExampleInput" name="dipCET_percentage"  min="1">
+                                </div>
+                            </div>
+                       </div>
+        </div>
+        <br>
+
+        <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    Name of the institution studied diploma:
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="NUMBER" class="form-control" id="formGroupExampleInput" name="diploma_name"  min="1">
+                                </div>
+                            </div>
+                       </div>
+        </div>
+        <br>
+
+         <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                   Diploma qualified year
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                     <input style="caret-color:red;" type="NUMBER" class="form-control" id="formGroupExampleInput" name="dipQualified_year"  min="1">
+                                </div>
+                            </div>
+                       </div>
+        </div>
+        <br>
+
+
+
+        <div class="row">
+            <div class="btn-group" role="group" aria-label="Basic example">
+            <a href="/Educational_Details/" class="btn btn-primary">Previous</a>
+            <a href="/Contact_Details/" class="btn btn-primary">Next</a>
+             </div>
+        </div>
+         </div>
+    </form>
+    
+	<!-- <a href="/Contact_Details/" class="btn btn-primary">Next</a>  -->   
+    </div>
+{% endblock %}
+
